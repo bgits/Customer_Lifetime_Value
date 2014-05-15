@@ -37,11 +37,11 @@ $(document).ready(function () {
 
     function get_values() {
         window.revenue = parse_currency($("#form input[name='revenue']").val());
-        window.margin = parse_currency($("#form input[name='margin']").val());
-        window.churn = parse_currency($("#form input[name='churn']").val());
-        window.discount = parse_currency($("#form input[name='discount']").val());
+        window.margin = parse_percent($("#form input[name='margin']").val());
+        window.churn = parse_percent($("#form input[name='churn']").val());
+        window.discount = parse_percent($("#form input[name='discount']").val());
         window.lead = parse_currency($("#form input[name='lead']").val());
-        window.closing = parse_currency($("#form input[name='closing']").val());
+        window.closing = parse_percent($("#form input[name='closing']").val());
         window.hours = parse_currency($("#form input[name='hours']").val());
         window.hr = parse_currency($("#form input[name='hr']").val());
 
@@ -52,6 +52,9 @@ $(document).ready(function () {
         return parseFloat(str.replace(/\$|,/g, "")) || "";
     }
 
+    function parse_percent(str) {
+        return parseFloat(str.replace(/%|./, "") && (str, ".".concat(str)));
+    }
     function clv() {
         if (!isNaN(clval)) {
             $("#clv").html("$" + Round2Cent(clval));
@@ -82,18 +85,18 @@ $(document).ready(function () {
 
     function result() {
         if (revenue > 0) {
-            if (nltval > 0) {
+            if (clval / clpa >= 3) {
                 $("#result").html("Sweet Lifetime Value<br />You're doing something right!");
                 $("#result_box").css("background-color", "green");
                 return;
-            } else if (nltval === 0) {
-                $("#result").html("Cutting it close...<br />Better boost your revenue");
+            } else if (clval / clpa <= 3 && clval / clpa >= 1) {
+                $("#result").html("Cutting it close...<br />Your LTV should be at least 3X your CAC");
                 $("#result_box").css("background-color", "#FF4500");
                 return;
             } else if (nltval < 0) {
                 $("#result").html("Negitive LTV!<br />Time to rethink the model?");
                 $("#result_box").css("background-color", "Crimson");
-                return;
+                return;nlt
             };
         };
         return;

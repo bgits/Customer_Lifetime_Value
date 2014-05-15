@@ -30,17 +30,17 @@
    
         <div class="field"> 
           <label for="margin">What is the gross margin?</label> 
-          <input type="text" name="margin" id="margin" placeholder=".10" /> 
+          <input type="text" name="margin" id="margin" placeholder="10%" /> 
         </div> 
 
         <div class="field"> 
           <label for="churn">Enter the percentage of customers who end their relationship with the company in a given period</label> 
-          <input type="text" name="churn" id="churn" placeholder=".10" />
+          <input type="text" name="churn" id="churn" placeholder="10%" />
         </div> 
 
         <div class="field"> 
           <label for="discount">Enter the cost of capital used to discount future revenue from a customer(discount rate)</label> 
-          <input type="text" name="discount" id="discount" placeholder=".10" />
+          <input type="text" name="discount" id="discount" placeholder="10%" />
         </div> 
 
         <div class="display_sum">
@@ -56,7 +56,7 @@
 
         <div class="field"> 
           <label for="closing">Enter your lead conversion percentage:</label> 
-          <input type="text" name="closing" id="closing" placeholder=".30" /> 
+          <input type="text" name="closing" id="closing" placeholder="30%" /> 
         </div>
 
         <div class="field"> 
