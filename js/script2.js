@@ -16,6 +16,9 @@ $(document).ready(function () {
         $(selector).html(isNaN(v) ? "Error" : "$" + Round2Cent(v)); 
     }
 
+    function ShowValue2 (selector, v) {
+        $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + total_customer + " customers"); 
+    }
     //Functions to update on input change
     function fun_list() {
         get_values();
@@ -23,12 +26,16 @@ $(document).ready(function () {
                         (1 + discount - (1 - churn)));
         window.clpa = (lead + (hours * hr) / closing);
         window.nltval = clval - clpa;
+	window.leadcon = leadr * closing;
 //        clv();
 //        cpa();
 //        nltv();
         ShowValue("#clv", clval);
         ShowValue("#cpa", clpa);
         ShowValue("#nltv", nltval);
+	cgr();
+	ShowValue2("#car", year1);
+	ShowValue("#ltbv", (nltval * total_customer));
         result();
         return;
     }
@@ -44,6 +51,7 @@ $(document).ready(function () {
         window.closing = parse_percent($("#form input[name='closing']").val());
         window.hours = parse_currency($("#form input[name='hours']").val());
         window.hr = parse_currency($("#form input[name='hr']").val());
+	window.leadr = parse_currency($("#form input[name='leadr']").val());
 
     };
 
@@ -72,6 +80,21 @@ $(document).ready(function () {
         }
         return;
     }
+
+
+
+   function cgr() {
+	total_customer = 0;
+	for (year1 = 0; (churn * total_customer) < (leadr * closing); year1++) {
+	        if ((churn * total_customer) >= (leadr * closing)) {
+            	final = year1;
+        	} else {
+			total_customer = total_customer + (leadr * closing);
+			console.log("total customer = " + total_customer + " |churn * total customer = " + (churn * total_customer) + " |leadr * closing =  " + (leadr * closing) + " |year = " + year1);
+		}
+	}
+}
+
 
     function nltv() {
         if (!isNaN(nltval)) {

@@ -146,13 +146,14 @@ text-align: center;
 }
 
 .display_sum{
-	width:250px;
+	width:auto;
 	margin-left:auto;
 	margin-right:auto;
 }
 
 p.display_sum{
-	
+		margin-left:0px;
+	margin-right:0px;
 }
 
 .sum{

@@ -16,9 +16,6 @@ $(document).ready(function () {
         $(selector).html(isNaN(v) ? "Error" : "$" + Round2Cent(v)); 
     }
 
-    function ShowValue2 (selector, v) {
-        $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + total_customer + " customers"); 
-    }
     //Functions to update on input change
     function fun_list() {
         get_values();
@@ -26,16 +23,13 @@ $(document).ready(function () {
                         (1 + discount - (1 - churn)));
         window.clpa = (lead + (hours * hr) / closing);
         window.nltval = clval - clpa;
-	window.leadcon = leadr * closing;
+//	window.leadcon = leadr * closing;
 //        clv();
 //        cpa();
 //        nltv();
         ShowValue("#clv", clval);
         ShowValue("#cpa", clpa);
         ShowValue("#nltv", nltval);
-	cgr();
-	ShowValue2("#car", year1);
-	ShowValue("#ltbv", (nltval * total_customer);
         result();
         return;
     }
@@ -51,9 +45,9 @@ $(document).ready(function () {
         window.closing = parse_percent($("#form input[name='closing']").val());
         window.hours = parse_currency($("#form input[name='hours']").val());
         window.hr = parse_currency($("#form input[name='hr']").val());
-	window.leadr = parse_currency($("#form input[name='leadr']").val());
+//        window.leadr = parse_currency($("#form input[name='leadr']").val());
 
-    };
+    
 
     // Takes a string like "$123,456.789" and returns 123456.789 - from start-up death clock
     function parse_currency(str) {
@@ -81,20 +75,23 @@ $(document).ready(function () {
         return;
     }
 
+//    var year = 0;
+//    var total_customer = 0;
 
+//    function cgr() {
+//	for (var year = 0; (churn * total_customer) < leadcon; year++) {
+//	    total_customer = total_customer + leadcon;
+//	}
+//}
 
-   function cgr() {
-	total_customer = 0;
-	for (year1 = 0; (churn * total_customer) < (leadr * closing); year1++) {
-	        if ((churn * total_customer) >= (leadr * closing)) {
-            	final = year1;
-        	} else {
-			total_customer = total_customer + (leadr * closing);
-			console.log("total customer = " + total_customer + " |churn * total customer = " + (churn * total_customer) + " |leadr * closing =  " + (leadr * closing) + " |year = " + year1);
-		}
-	}
-}
-
+//    function car() {
+//        if (!isNaN(year)) {
+//            $("#car").html(year);
+//        } else {
+//            $("#car").html("error");
+//        }
+//        return;
+//    }
 
     function nltv() {
         if (!isNaN(nltval)) {
@@ -128,5 +125,4 @@ $(document).ready(function () {
     $("#bslide").click(function () {
         $("#btext").slideToggle("slow", function () {});
     });
-
-});
+}

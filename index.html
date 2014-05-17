@@ -24,7 +24,7 @@
     	<div id="form"> 
 
         <div class="field"> 
-          <label for="revenue">What is the revenue per customer?</label> 
+          <label for="revenue">What is the annual revenue per customer?</label> 
           <input type="text" name="revenue" id="revenue" placeholder="$30" /> 
         </div> 
    
@@ -55,6 +55,11 @@
         </div>
 
         <div class="field"> 
+          <label for="leadr">Enter the number of leads you receive in a year:</label> 
+          <input type="text" name="leadr" id="leadr" placeholder="100" /> 
+        </div>
+
+        <div class="field"> 
           <label for="closing">Enter your lead conversion percentage:</label> 
           <input type="text" name="closing" id="closing" placeholder="30%" /> 
         </div>
@@ -70,14 +75,26 @@
         </div>
 
         <div class="display_sum">
+          <div class="sum"><p>Customer churn will exceed new acquisitions after:  </p></div>
+          <div id ="burst" class="fr"><p id="car"></p></div>
+          <div class="clear"></div> 
+        </div>
+
+        <div class="display_sum">
           <div class="sum"><p>Cost of Customer Acquisition: </p></div>
           <div id ="burst" class="fr"><p id="cpa"></p></div>
           <div class="clear"></div> 
         </div>
 
         <div class="display_sum">
-          <div class="sum"><p>Net LTV: </p></div>
+          <div class="sum"><p>Net LTV per Customer: </p></div>
           <div id ="burst" class="fr"><p id="nltv"></p></div>
+          <div class="clear"></div> 
+        </div>
+
+        <div class="display_sum">
+          <div class="sum"><p>Long term business value: </p></div>
+          <div id ="burst" class="fr"><p id="ltbv"></p></div>
           <div class="clear"></div> 
         </div>
 

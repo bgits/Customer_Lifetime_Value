@@ -24,7 +24,7 @@
     	<div id="form"> 
 
         <div class="field"> 
-          <label for="revenue">What is the revenue per customer?</label> 
+          <label for="revenue">What is the annual revenue per customer?</label> 
           <input type="text" name="revenue" id="revenue" placeholder="$30" /> 
         </div> 
    
@@ -55,6 +55,11 @@
         </div>
 
         <div class="field"> 
+          <label for="leadr">Enter the number of leads you receive in a given period:</label> 
+          <input type="text" name="leadr" id="leadr" placeholder="100" /> 
+        </div>
+
+        <div class="field"> 
           <label for="closing">Enter your lead conversion percentage:</label> 
           <input type="text" name="closing" id="closing" placeholder="30%" /> 
         </div>
@@ -70,14 +75,26 @@
         </div>
 
         <div class="display_sum">
+          <div class="sum"><p>Customer churn will exceed new acquisitions after:  </p></div>
+          <div id ="burst" class="fr"><p id="car"></p></div>
+          <div class="clear"></div> 
+        </div>
+
+        <div class="display_sum">
           <div class="sum"><p>Cost of Customer Acquisition: </p></div>
           <div id ="burst" class="fr"><p id="cpa"></p></div>
           <div class="clear"></div> 
         </div>
 
         <div class="display_sum">
-          <div class="sum"><p>Net LTV: </p></div>
+          <div class="sum"><p>Net LTV per Customer: </p></div>
           <div id ="burst" class="fr"><p id="nltv"></p></div>
+          <div class="clear"></div> 
+        </div>
+
+        <div class="display_sum">
+          <div class="sum"><p>Long term business value: </p></div>
+          <div id ="burst" class="fr"><p id="ltbv"></p></div>
           <div class="clear"></div> 
         </div>
 
@@ -109,7 +126,7 @@
 	<p>
 	This calculator is my expansion on <a href="http://randylubin.com">Randy Lubin's</a> customer lifetime value calculator. This calculator is better suited toward the paid engine of growth model. If your customer acquisition does not require any sales effort then mark the last two questions related to manhours 0.
 	</p>
-      <p>To learn more about Customer Lifetime Value, check out these articles by <a href="http://www.avc.com/a_vc/2011/04/ltv-cpa.html">Fred Wilson</a> and <a href="http://www.kaushik.net/avinash/analytics-tip-calculate-ltv-customer-lifetime-value/">Avinash Kaushik</a>.
+      <p>To learn more about Customer Lifetime Value, check out these articles by <a href="http://www.avc.com/a_vc/2011/04/ltv-cpa.html">Fred Wilson</a>, <a href="http://www.kaushik.net/avinash/analytics-tip-calculate-ltv-customer-lifetime-value/">Avinash Kaushik</a>, <a href="http://a16z.com/2014/05/13/understanding-saas-valuation-primer/">Scott Kupor and Preethi Kasireddy</a>
       <br /><br />
   
       </div>
