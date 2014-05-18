@@ -23,7 +23,7 @@ $(document).ready(function () {
     }
 
     function ShowValue2 (selector, v) {
-        $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + total_customer + " customers. " + "Revenue at that time will be: $" + (revenue * total_customer) + " with annual gross margin of $" + (revenue * margin) * total_customer + " and annual profit of: $" + numberWithCommas(profit)); 
+        $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + total_customer + " customers. " + "Annual revenue at that time will be: $" + numberWithCommas((revenue * total_customer)) + " with gross margin of $" + numberWithCommas((revenue * margin) * total_customer) + " and annual profit of: $" + numberWithCommas(profit)); 
     }
     //Functions to update on input change
     function fun_list() {
@@ -34,6 +34,7 @@ $(document).ready(function () {
         window.nltval = clval - clpa;
 	window.leadcon = leadr * closing;
 	cgr();
+	dcf();
 	window.profit = ((revenue * margin) * total_customer)  - ((leadr * lead) + (lead * (hours * hr)));
 //        clv();
 //        cpa();
@@ -42,7 +43,7 @@ $(document).ready(function () {
         ShowValue("#cpa", clpa);
         ShowValue("#nltv", nltval);
 	ShowValue2("#car", year1);
-	ShowValue("#ltbv", (nltval * total_customer));
+	ShowValue("#ltbv", (termv + total));
         result();
         return;
     }
@@ -89,14 +90,26 @@ $(document).ready(function () {
     }
 
 
+	
+   function dcf () {
+	dcash = [];
+	for (cfyear = 0; cfyear < yearlyp.length; cfyear++){
+		dcash.push(yearlyp[cfyear] / Math.pow((1 + discount), cfyear+1));
+	}
+	 window.total = dcash.reduce(function(a, b) {
+    return a + b;
+}); window.termv = dcash[cfyear - 1] / discount /*compute terminal value */	
+}
 
    function cgr() {
 	total_customer = 0;
+	yearlyp = [];
 	for (year1 = 0; (churn * total_customer) < (leadr * closing); year1++) {
 	        if ((churn * total_customer) >= (leadr * closing)) {
             	final = year1;
         	} else {
 			total_customer = total_customer + (leadr * closing);
+			yearlyp.push((revenue * margin) * total_customer)  - ((leadr * lead) + (lead * (hours * hr)));;
 			console.log("total customer = " + total_customer + " |churn * total customer = " + (churn * total_customer) + " |leadr * closing =  " + (leadr * closing) + " |year = " + year1);
 		}
 	}
