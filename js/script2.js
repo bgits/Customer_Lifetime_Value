@@ -2,6 +2,12 @@ function Round2Cent(v) {
     return Math.round(v*100)/100;
 }
 
+function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+
 $(document).ready(function () {
     $("#btext").hide();
 
@@ -13,11 +19,11 @@ $(document).ready(function () {
     });
 
     function ShowValue (selector, v) {
-        $(selector).html(isNaN(v) ? "Error" : "$" + Round2Cent(v)); 
+        $(selector).html(isNaN(v) ? "Error" : "$" + numberWithCommas(Round2Cent(v))); 
     }
 
     function ShowValue2 (selector, v) {
-        $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + total_customer + " customers"); 
+        $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + total_customer + " customers. " + "Revenue at that time will be: $" + numberWithCommas((revenue * total_customer)) + " with annual gross margin of $" + numberWithCommas((revenue * margin) * total_customer) + " and annual profit of: $" + numberWithCommas(profit)); 
     }
     //Functions to update on input change
     function fun_list() {
@@ -27,13 +33,14 @@ $(document).ready(function () {
         window.clpa = (lead + (hours * hr) / closing);
         window.nltval = clval - clpa;
 	window.leadcon = leadr * closing;
+	cgr();
+	window.profit = ((revenue * margin) * total_customer)  - ((leadr * lead) + (lead * (hours * hr)));
 //        clv();
 //        cpa();
 //        nltv();
         ShowValue("#clv", clval);
         ShowValue("#cpa", clpa);
         ShowValue("#nltv", nltval);
-	cgr();
 	ShowValue2("#car", year1);
 	ShowValue("#ltbv", (nltval * total_customer));
         result();
@@ -61,11 +68,11 @@ $(document).ready(function () {
     }
 
     function parse_percent(str) {
-        return parseFloat(str.replace(/%|./, "") && (str, ".".concat(str)));
+        return parseFloat(str = (str / 100.0));
     }
     function clv() {
         if (!isNaN(clval)) {
-            $("#clv").html("$" + Round2Cent(clval));
+            $("#clv").html("$" + (Round2Cent(clval)));
         } else {
             $("#clv").html("error");
         };
