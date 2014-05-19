@@ -5,7 +5,8 @@
 	<title>Customer Lifetime Value Calculator</title> 
 	<link rel="stylesheet" type="text/css" href="css/style.css"/> 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script type="text/javascript" src="js/script2.js"></script> 
+	<script src="js/Chart.js"></script>
+	<script type="text/javascript" src="js/script.js"></script> 
 </head> 
 
 <body> 
@@ -78,7 +79,9 @@
           <div class="sum"><p>Customer churn will exceed new acquisitions after:  </p></div>
           <div id ="burst" class="fr"><p id="car"></p></div>
           <div class="clear"></div> 
-        </div>
+	</div>
+
+	<canvas id="myChart" width="400" height="400"></canvas>
 
         <div class="display_sum">
           <div class="sum"><p>Cost of Customer Acquisition: </p></div>
@@ -93,7 +96,7 @@
         </div>
 
         <div class="display_sum">
-          <div class="sum"><p>Long term business value: </p></div>
+          <div class="sum"><p>Long term business value (DCF): </p></div>
           <div id ="burst" class="fr"><p id="ltbv"></p></div>
           <div class="clear"></div> 
         </div>

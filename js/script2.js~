@@ -23,7 +23,7 @@ $(document).ready(function () {
     }
 
     function ShowValue2 (selector, v) {
-        $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + total_customer + " customers. " + "Annual revenue at that time will be: $" + numberWithCommas((revenue * total_customer)) + " with gross margin of $" + numberWithCommas((revenue * margin) * total_customer) + " and annual profit of: $" + numberWithCommas(profit)); 
+        $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + Round2Cent(total_customer) + " customers. " + "Annual revenue at that time will be: $" + numberWithCommas(Round2Cent((revenue * total_customer))) + " with gross margin of $" + numberWithCommas(Round2Cent((revenue * margin) * total_customer)) + " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(profit))); 
     }
     //Functions to update on input change
     function fun_list() {
@@ -44,6 +44,25 @@ $(document).ready(function () {
         ShowValue("#nltv", nltval);
 	ShowValue2("#car", year1);
 	ShowValue("#ltbv", (termv + total));
+		var lineChartData = {
+			labels : years,
+			datasets : [
+
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : yearlyp
+				}
+			]
+			
+		}
+
+var ctx = $("#myChart").get(0).getContext("2d");
+var myNewChart = new Chart(ctx);
+new Chart(ctx).Line(lineChartData, { scaleFontColor: "#CCFFFF" });
+
         result();
         return;
     }
@@ -98,18 +117,23 @@ $(document).ready(function () {
 	}
 	 window.total = dcash.reduce(function(a, b) {
     return a + b;
-}); window.termv = dcash[cfyear - 1] / discount /*compute terminal value */	
+}); window.termv = yearlyp[year1 - 1] / discount /*compute terminal value */	
 }
 
    function cgr() {
 	total_customer = 0;
+	TCC = [];
 	yearlyp = [];
-	for (year1 = 0; (churn * total_customer) < (leadr * closing); year1++) {
+	years = [];
+	for (year1 = 0; (churn * total_customer) < ((leadr * closing) - 0.9); year1++) {
 	        if ((churn * total_customer) >= (leadr * closing)) {
             	final = year1;
         	} else {
-			total_customer = total_customer + (leadr * closing);
-			yearlyp.push((revenue * margin) * total_customer)  - ((leadr * lead) + (lead * (hours * hr)));;
+			total_customer = (total_customer + (leadr * closing)) - (churn * total_customer);
+			yearlyp.push(
+				((revenue * margin) * total_customer) - ((leadr * lead) + (lead * (hours * hr))));
+			years.push(year1);
+			TCC.push(total_customer);
 			console.log("total customer = " + total_customer + " |churn * total customer = " + (churn * total_customer) + " |leadr * closing =  " + (leadr * closing) + " |year = " + year1);
 		}
 	}
