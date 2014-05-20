@@ -30,12 +30,13 @@ $(document).ready(function () {
         get_values();
         window.clval = ((revenue * margin) * (1 - churn) / 
                         (1 + discount - (1 - churn)));
-        window.clpa = (lead + (hours * hr) / closing);
+        window.clpa = (lead + (hours * hr)) / closing;
         window.nltval = clval - clpa;
 	window.leadcon = leadr * closing;
 	cgr();
 	dcf();
 	window.profit = ((revenue * margin) * total_customer)  - ((leadr * lead) + (lead * (hours * hr)));
+//	$("#clv")[0].scrollIntoView();
 //        clv();
 //        cpa();
 //        nltv();
