@@ -23,7 +23,7 @@ $(document).ready(function () {
     }
 
     function ShowValue2 (selector, v) {
-        $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + Round2Cent(total_customer) + " customers. " + "Annual revenue at that time will be: $" + numberWithCommas(Round2Cent((revenue * total_customer))) + " with gross margin of $" + numberWithCommas(Round2Cent((revenue * margin) * total_customer)) + " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(profit))); 
+        $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + Math.round(total_customer) + " customers. " + "Annual revenue at that time will be: $" + numberWithCommas(Round2Cent(revenue * total_customer)) + " with gross margin of $" + numberWithCommas(Round2Cent((revenue * margin) * total_customer)) + " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(profit))); 
     }
     //Functions to update on input change
     function fun_list() {
@@ -125,7 +125,7 @@ new Chart(ctx).Line(lineChartData, { scaleFontColor: "#CCFFFF" });
 	TCC = [];
 	yearlyp = [];
 	years = [];
-	for (year1 = 0; (churn * total_customer) < ((leadr * closing) - 0.9); year1++) {
+	for (year1 = 0; Math.ceil(churn * total_customer) < (leadr * closing); year1++) {
 	        if ((churn * total_customer) >= (leadr * closing)) {
             	final = year1;
         	} else {
