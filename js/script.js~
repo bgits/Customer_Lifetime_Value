@@ -30,7 +30,7 @@ $(document).ready(function () {
         get_values();
         window.clval = ((revenue * margin) * (1 - churn) / 
                         (1 + discount - (1 - churn)));
-        window.clpa = ((lead + (hours * hr)) * leadr) / (closing * leadr);
+        window.clpa = (lead + (hours * hr)) / closing;
         window.nltval = clval - clpa;
 	window.leadcon = leadr * closing;
 	cgr();
