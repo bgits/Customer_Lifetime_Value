@@ -62,7 +62,7 @@ $(document).ready(function () {
 
 var ctx = $("#myChart").get(0).getContext("2d");
 var myNewChart = new Chart(ctx);
-new Chart(ctx).Line(lineChartData, { scaleFontColor: "#CCFFFF" });
+new Chart(ctx).Line( lineChartData, { scaleFontColor: "#CCFFFF", scaleLabel: "$" + "<%= numberWithCommas(value) %>" });
 
         result();
         return;
