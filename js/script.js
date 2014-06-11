@@ -35,7 +35,7 @@ $(document).ready(function () {
 	window.leadcon = leadr * closing;
 	cgr();
 	dcf();
-	window.profit = ((revenue * margin) * total_customer)  - ((leadr * lead) + (lead * (hours * hr)));
+	window.profit = ((revenue * margin) * total_customer)  - ((leadr * lead) + (leadr * (hours * hr)));
 //	$("#clv")[0].scrollIntoView();
 //        clv();
 //        cpa();
