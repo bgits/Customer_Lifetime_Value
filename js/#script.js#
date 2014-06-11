@@ -133,9 +133,9 @@ new Chart(ctx).Line(lineChartData, { scaleFontColor: "#CCFFFF" });
         	} else {
 			total_customer = (total_customer + (leadr * closing)) - (churn * total_customer);
 			yearlyp.push(
-				((revenue * margin) * total_customer) - ((leadr * lead) + (leadr * (hours * hr))));
-		        yearlyd.push(
-				numberWithCommas(((revenue * margin) * total_customer) - ((leadr * lead) + (leadr * (hours * hr)))));
+				((revenue * margin) * total_customer) - ((leadr * lead) + (lead * (hours * hr));
+			yearlyd.push(
+				nu((revenue * margin) * total_customer) - ((leadr * lead) + (lead * (hours * hr))));
 			years.push(year1);
 			TCC.push(total_customer);
 			console.log("total customer = " + total_customer + " |churn * total customer = " + (churn * total_customer) + " |leadr * closing =  " + (leadr * closing) + " |year = " + year1);
