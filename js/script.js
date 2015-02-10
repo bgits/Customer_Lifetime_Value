@@ -125,8 +125,8 @@ new Chart(ctx).Line( lineChartData, { scaleFontColor: "#CCFFFF", scaleLabel: "$"
 	total_customer = 0;
 	TCC = [];
 	yearlyp = [];
-        yearlyd = [];
-	years = [];
+  yearlyd = [];
+ 	years = [];
 	for (year1 = 0; Math.ceil(churn * total_customer) < (leadr * closing); year1++) {
 	        if ((churn * total_customer) >= (leadr * closing)) {
             	final = year1;
@@ -138,7 +138,7 @@ new Chart(ctx).Line( lineChartData, { scaleFontColor: "#CCFFFF", scaleLabel: "$"
 				numberWithCommas(((revenue * margin) * total_customer) - ((leadr * lead) + (leadr * (hours * hr)))));
 			years.push(year1);
 			TCC.push(total_customer);
-			console.log("total customer = " + total_customer + " |churn * total customer = " + (churn * total_customer) + " |leadr * closing =  " + (leadr * closing) + " |year = " + year1);
+		//	console.log("total customer = " + total_customer + " |churn * total customer = " + (churn * total_customer) + " |leadr * closing =  " + (leadr * closing) + " |year = " + year1);
 		}
 	}
 }
