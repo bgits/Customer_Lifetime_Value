@@ -32,34 +32,58 @@
       </nav>
           </div>
 
-<div id="wrapper"> 
   
  
-  <div id="top">  
+  <div class="row">  
     
-    <div id="calc"> 
+    <div class="col s6"> 
 
     	<div id="form"> 
 
-        <div class="field"> 
+        <div class="field input-field"> 
           <label for="revenue">What is the annual revenue per customer?</label> 
-          <input type="text" name="revenue" id="revenue" placeholder="$30" /> 
+          <input type="text" name="revenue" id="revenue" class="validate" placeholder="$30" /> 
         </div> 
    
-        <div class="field"> 
+        <div class="field input-field"> 
           <label for="margin">What is the gross margin?</label> 
-          <input type="text" name="margin" id="margin" placeholder="10%" /> 
+          <input type="text" class="validate" name="margin" id="margin" placeholder="10%" /> 
         </div> 
 
-        <div class="field"> 
+        <div class="field input-field"> 
           <label for="churn">Enter the percentage of customers who end their relationship with the company in a given period</label> 
-          <input type="text" name="churn" id="churn" placeholder="10%" />
+          <input type="text" class="validate "name="churn" id="churn" placeholder="10%" />
         </div> 
 
-        <div class="field"> 
+        <div class="field input-field"> 
           <label for="discount">Enter the cost of capital used to discount future revenue from a customer(discount rate)</label> 
-          <input type="text" name="discount" id="discount" placeholder="10%" />
+          <input type="text" class="validate" name="discount" id="discount" placeholder="10%" />
         </div> 
+
+        <div class="field input-field"> 
+          <label for="lead">Enter the average cost per lead:</label> 
+          <input type="text" class="validate" name="lead" id="lead" placeholder="$3" /> 
+        </div>
+
+        <div class="field input-field"> 
+          <label for="leadr">Enter the number of leads you receive in a year:</label> 
+          <input type="text" class="validate" name="leadr" id="leadr" placeholder="100" /> 
+        </div>
+
+        <div class="field input-field"> 
+          <label for="closing">Enter your lead conversion percentage:</label> 
+          <input type="text" class="validate" name="closing" id="closing" placeholder="30%" /> 
+        </div>
+
+        <div class="field input-field"> 
+          <label for="hours">Enter number of manhours per lead pitched:</label> 
+          <input type="text" class="validate" name="hours" id="hours" placeholder="5" /> 
+        </div>
+
+        <div class="field input-field"> 
+          <label for="hr">Enter the hourly rate per manhour:</label> 
+          <input type="text" class="validate" name="hr" id="hr" placeholder="$50" /> 
+        </div>
 
         <div class="display_sum">
           <div class="sum"><p>Customer Lifetime Value: </p></div>
@@ -67,38 +91,21 @@
           <div class="clear"></div> 
         </div>
 
-        <div class="field"> 
-          <label for="lead">Enter the average cost per lead:</label> 
-          <input type="text" name="lead" id="lead" placeholder="$3" /> 
-        </div>
-
-        <div class="field"> 
-          <label for="leadr">Enter the number of leads you receive in a year:</label> 
-          <input type="text" name="leadr" id="leadr" placeholder="100" /> 
-        </div>
-
-        <div class="field"> 
-          <label for="closing">Enter your lead conversion percentage:</label> 
-          <input type="text" name="closing" id="closing" placeholder="30%" /> 
-        </div>
-
-        <div class="field"> 
-          <label for="hours">Enter number of manhours per lead pitched:</label> 
-          <input type="text" name="hours" id="hours" placeholder="5" /> 
-        </div>
-
-        <div class="field"> 
-          <label for="hr">Enter the hourly rate per manhour:</label> 
-          <input type="text" name="hr" id="hr" placeholder="$50" /> 
-        </div>
-
         <div class="display_sum">
           <div class="sum"><p>Customer churn will exceed new acquisitions after:  </p></div>
           <div id ="burst" class="fr"><p id="car"></p></div>
           <div class="clear"></div> 
-	</div>
+	      </div>
 
-	<canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+    </div>
+   
+    
+    <div class="col s6">
+
+      
+
+
 
         <div class="display_sum">
           <div class="sum"><p>Cost of Customer Acquisition: </p></div>
@@ -118,16 +125,18 @@
           <div class="clear"></div> 
         </div>
 
-
+	
         <div id="result_box">
           <p id="result"></p>
         </div>
+        
+<canvas id="myChart" width="400px" height="400px"></canvas>      
 
       </div> 
-    </div> 
+    </div>
+  </div>
     
     <div class="clear"></div> 
-  </div>
   
   <div id="bar">
     <hr>
@@ -153,7 +162,7 @@
     </div>
   
   
-</div> 
+ 
 <div>
   <br />
   <p style="text-align:center"><a href="https://github.com/bgvianyc/Customer_Lifetime_Value">"Customer Lifetime Calculator"</a> by <a href="https://twitter.com/bgvianyc">Barry Gitarts</a>, used under   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a>/ modified from <a href="https://github.com/randylubin/Customer-Lifetime-Value-Calculator">original</a> by<a href="http://randylubin.com/"> Randy Lubin</a>    
