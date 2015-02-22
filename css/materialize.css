@@ -5032,7 +5032,7 @@ span.badge {
 
 nav {
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #CDDC39;
   width: 100%;
   height: 56px;
   line-height: 56px; }
@@ -5173,7 +5173,7 @@ html {
   line-height: 1.5;
   font-family: "Roboto", sans-serif;
   font-weight: normal;
-  color: rgba(0, 0, 0, 0.87); }
+  color: #76FF03; }
   @media only screen and (min-width: 0) {
     html {
       font-size: 14px; } }
@@ -6060,9 +6060,9 @@ label {
   position: relative;
   margin-top: 1rem; }
   .input-field label {
-    color: #9e9e9e;
+    color: #CFD8DC;
     position: absolute;
-    top: 0.8rem;
+    top: 1.3rem;
     left: 0.75rem;
     font-size: 1rem;
     cursor: text;
@@ -6073,7 +6073,7 @@ label {
     transition: 0.2s ease-out; }
   .input-field label.active {
     font-size: 0.8rem;
-    -webkit-transform: translateY(-140%);
+    -webkit-transform: translateY(-180%);
     -moz-transform: translateY(-140%);
     -ms-transform: translateY(-140%);
     -o-transform: translateY(-140%);

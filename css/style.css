@@ -79,7 +79,7 @@ form {
 }
 
 input {    
-  text-align: right;
+  text-align: center;
   width:70px;
   float:right;  
   
@@ -128,8 +128,8 @@ text-align: center;
 }
 
 .fr{
-	float:right;
-	margin-left:auto;
+	float:left;
+	margin-left:1%;
 }
 
 .clear {
