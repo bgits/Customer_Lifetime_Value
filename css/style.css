@@ -1,6 +1,6 @@
 body{
 	max-height:636px;
-  background-image: url(images/bg_md.jpg);
+  background-color: rgba(8,8,8,0.8);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
