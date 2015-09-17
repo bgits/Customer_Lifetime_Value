@@ -33,57 +33,55 @@
       </nav>
           </div>
 
-
-
   <div class="row">
 
-    <div class="col s12">
+    <div class="answer">
 
         <div id="form">
 
         <div class="field input-field">
           <label for="revenue">Annual revenue per customer?</label>
-          <input type="text" name="revenue" id="revenue" class="validate" placeholder="$30" />
+          <input type="text" name="revenue" id="revenue" class="validate" placeholder="$30"  onfocus="this.placeholder = ''" onblur="this.placeholder = '$30'"/>
         </div>
 
         <div class="field input-field">
           <label for="margin">Gross margin?</label>
-          <input type="text" class="validate" name="margin" id="margin" placeholder="10%" />
+          <input type="text" class="validate" name="margin" id="margin" placeholder="10%" onfocus="this.placeholder = ''" onblur="this.placeholder = '10%'" />
         </div>
 
         <div class="field input-field">
           <label for="churn">Percentage of customers who end their relationship with the company in a given period</label>
-          <input type="text" class="validate "name="churn" id="churn" placeholder="10%" />
+          <input type="text" class="validate "name="churn" id="churn" placeholder="10%" onfocus="this.placeholder = ''" onblur="this.placeholder = '10%'" />
         </div>
 
         <div class="field input-field">
           <label for="discount">Cost of capital used to discount future revenue from a customer(discount rate)</label>
-          <input type="text" class="validate" name="discount" id="discount" placeholder="10%" />
+          <input type="text" class="validate" name="discount" id="discount" placeholder="10%" onfocus="this.placeholder = ''" onblur="this.placeholder = '10%'" />
         </div>
 
         <div class="field input-field">
           <label for="lead">Average cost per lead?</label>
-          <input type="text" class="validate" name="lead" id="lead" placeholder="$3" />
+          <input type="text" class="validate" name="lead" id="lead" placeholder="$3"  onfocus="this.placeholder = ''" onblur="this.placeholder = '$3'"/>
         </div>
 
         <div class="field input-field">
           <label for="leadr">Number of leads received in a year?</label>
-          <input type="text" class="validate" name="leadr" id="leadr" placeholder="100" />
+          <input type="text" class="validate" name="leadr" id="leadr" placeholder="100" onfocus="this.placeholder = ''" onblur="this.placeholder = '100'" />
         </div>
 
         <div class="field input-field">
           <label for="closing">Lead conversion percentage?</label>
-          <input type="text" class="validate" name="closing" id="closing" placeholder="30%" />
+          <input type="text" class="validate" name="closing" id="closing" placeholder="30%" onfocus="this.placeholder = ''" onblur="this.placeholder = '30%'" />
         </div>
 
         <div class="field input-field">
           <label for="hours">Number of manhours per lead pitched?</label>
-          <input type="text" class="validate" name="hours" id="hours" placeholder="5" />
+          <input type="text" class="validate" name="hours" id="hours" placeholder="5" onfocus="this.placeholder = ''" onblur="this.placeholder = '5'" />
         </div>
 
         <div class="field input-field">
           <label for="hr">Hourly rate per manhour?</label>
-          <input type="text" class="validate" name="hr" id="hr" placeholder="$50" />
+          <input type="text" class="validate" name="hr" id="hr" placeholder="$50" onfocus="this.placeholder = ''" onblur="this.placeholder = '$50'" />
         </div>
 
         <div class="display_sum">
@@ -102,6 +100,7 @@
       </div>
     </div>
 
+    <div class="answer">
 
     <div class="col s12">
 
@@ -128,7 +127,7 @@
           <p id="result"></p>
         </div>
 
-        <canvas id="myChart" width="100%"></canvas>
+        <canvas id="myChart" width="50%" height="50%"></canvas>
 
       </div>
     </div>
