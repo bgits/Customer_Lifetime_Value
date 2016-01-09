@@ -38,7 +38,7 @@ $(document).ready(function () {
     window.profit = ((revenue * margin) * total_customer)  - ((leadr * lead) + (leadr * (hours * hr)));
     //	$("#clv")[0].scrollIntoView();
     //        clv();
-    //        cpa();
+    //        costPerAcquisition();
     //        nltv();
     ShowValue("#clv", clval);
     ShowValue("#cpa", clpa);
@@ -100,7 +100,7 @@ $(document).ready(function () {
     return
   };
 
-  function cpa() {
+  function costPerAcquisition() {
     if (!isNaN(clpa)) {
       $("#cpa").html("$" + Round2Cent(clpa));
     } else {
