@@ -38,7 +38,6 @@ $(document).ready(function () {
     window.profit = ((revenue * margin) * total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)));
     //	$("#clv")[0].scrollIntoView();
     //        clv();
-    //        costPerAcquisition();
     //        nltv();
     ShowValue("#clv", clval);
     ShowValue("#cpa", clpa);
@@ -100,16 +99,7 @@ $(document).ready(function () {
     return
   };
 
-  function costPerAcquisition() {
-    if (!isNaN(clpa)) {
-      $("#cpa").html("$" + Round2Cent(clpa));
-    } else {
-      $("#cpa").html("error");
-    }
-    return;
-  }
-
-  function discountedCashFlow () {
+    function discountedCashFlow () {
     dcash = [];
     for (cfyear = 0; cfyear < yearlyp.length; cfyear++){
       dcash.push(yearlyp[cfyear] / Math.pow((1 + discount), cfyear+1));
