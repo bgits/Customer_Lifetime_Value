@@ -30,12 +30,12 @@ $(document).ready(function () {
     get_values();
     window.clval = ((revenue * margin) * (1 - churn) /
                     (1 + discount - (1 - churn)));
-    window.clpa = ((lead + (hours * hr)) * leadr) / (closing * leadr);
+    window.clpa = ((lead + (hours * hr)) * numberOfLeads) / (closing * numberOfLeads);
     window.nltval = clval - clpa;
-    window.leadcon = leadr * closing;
+    window.leadcon = numberOfLeads * closing;
     cgr();
     discountedCashFlow();
-    window.profit = ((revenue * margin) * total_customer)  - ((leadr * lead) + (leadr * (hours * hr)));
+    window.profit = ((revenue * margin) * total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)));
     //	$("#clv")[0].scrollIntoView();
     //        clv();
     //        costPerAcquisition();
@@ -79,7 +79,7 @@ $(document).ready(function () {
     window.closing = parse_percent($("#form input[name='closing']").val());
     window.hours = parse_currency($("#form input[name='hours']").val());
     window.hr = parse_currency($("#form input[name='hr']").val());
-    window.leadr = parse_currency($("#form input[name='leadr']").val());
+    window.numberOfLeads = parse_currency($("#form input[name='numberOfLeads']").val());
 
   };
 
@@ -126,15 +126,15 @@ $(document).ready(function () {
     yearlyp = [];
     yearlyd = [];
     years = [];
-    for (year1 = 0; Math.ceil(churn * total_customer) < (leadr * closing); year1++) {
-      if ((churn * total_customer) >= (leadr * closing)) {
+    for (year1 = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); year1++) {
+      if ((churn * total_customer) >= (numberOfLeads * closing)) {
         final = year1;
       } else {
-        total_customer = (total_customer + (leadr * closing)) - (churn * total_customer);
+        total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
         yearlyp.push(
-          ((revenue * margin) * total_customer) - ((leadr * lead) + (leadr * (hours * hr))));
+          ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr))));
         yearlyd.push(
-          numberWithCommas(((revenue * margin) * total_customer) - ((leadr * lead) + (leadr * (hours * hr)))));
+          numberWithCommas(((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)))));
         years.push(year1);
         TCC.push(total_customer);
       }
