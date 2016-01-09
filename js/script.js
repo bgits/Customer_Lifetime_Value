@@ -34,7 +34,7 @@ $(document).ready(function () {
     window.nltval = clval - clpa;
     window.leadcon = leadr * closing;
     cgr();
-    dcf();
+    discountedCashFlow();
     window.profit = ((revenue * margin) * total_customer)  - ((leadr * lead) + (leadr * (hours * hr)));
     //	$("#clv")[0].scrollIntoView();
     //        clv();
@@ -49,13 +49,13 @@ $(document).ready(function () {
       labels : years,
       datasets : [
 
-	{
-	  fillColor : "rgba(151,187,205,0.5)",
-	  strokeColor : "rgba(151,187,205,1)",
-	  pointColor : "rgba(151,187,205,1)",
-	  pointStrokeColor : "#fff",
-	  data : yearlyp
-	}
+	      {
+	        fillColor : "rgba(151,187,205,0.5)",
+	        strokeColor : "rgba(151,187,205,1)",
+	        pointColor : "rgba(151,187,205,1)",
+	        pointStrokeColor : "#fff",
+	        data : yearlyp
+	      }
       ]
       
     }
@@ -109,7 +109,7 @@ $(document).ready(function () {
     return;
   }
   
-  function dcf () {
+  function discountedCashFlow () {
     dcash = [];
     for (cfyear = 0; cfyear < yearlyp.length; cfyear++){
       dcash.push(yearlyp[cfyear] / Math.pow((1 + discount), cfyear+1));
@@ -130,13 +130,13 @@ $(document).ready(function () {
       if ((churn * total_customer) >= (leadr * closing)) {
         final = year1;
       } else {
-	total_customer = (total_customer + (leadr * closing)) - (churn * total_customer);
-	yearlyp.push(
-	  ((revenue * margin) * total_customer) - ((leadr * lead) + (leadr * (hours * hr))));
-	yearlyd.push(
-	  numberWithCommas(((revenue * margin) * total_customer) - ((leadr * lead) + (leadr * (hours * hr)))));
-	years.push(year1);
-	TCC.push(total_customer);
+	      total_customer = (total_customer + (leadr * closing)) - (churn * total_customer);
+	      yearlyp.push(
+	        ((revenue * margin) * total_customer) - ((leadr * lead) + (leadr * (hours * hr))));
+	      yearlyd.push(
+	        numberWithCommas(((revenue * margin) * total_customer) - ((leadr * lead) + (leadr * (hours * hr)))));
+	      years.push(year1);
+	      TCC.push(total_customer);
       }
     }
   }
