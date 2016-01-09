@@ -30,8 +30,8 @@ $(document).ready(function () {
     get_values();
     window.clval = ((revenue * margin) * (1 - churn) /
                     (1 + discount - (1 - churn)));
-    window.clpa = ((lead + (hours * hr)) * numberOfLeads) / (closing * numberOfLeads);
-    window.nltval = clval - clpa;
+    window.costPerAcquisition = ((lead + (hours * hr)) * numberOfLeads) / (closing * numberOfLeads);
+    window.nltval = clval - costPerAcquisition;
     window.leadcon = numberOfLeads * closing;
     cgr();
     discountedCashFlow();
@@ -40,7 +40,7 @@ $(document).ready(function () {
     //        clv();
     //        nltv();
     ShowValue("#clv", clval);
-    ShowValue("#cpa", clpa);
+    ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", nltval);
     ShowValue2("#car", year1);
     ShowValue("#ltbv", (termv + total));
@@ -144,11 +144,11 @@ $(document).ready(function () {
 
   function result() {
     if (revenue > 0) {
-      if (clval / clpa >= 3) {
+      if (clval / costPerAcquisition >= 3) {
         $("#result").html("Sweet Lifetime Value<br />You're doing something right!");
         $("#result_box").css("background-color", "green");
         return;
-      } else if (clval / clpa <= 3 && clval / clpa >= 1) {
+      } else if (clval / costPerAcquisition <= 3 && clval / costPerAcquisition >= 1) {
         $("#result").html("Cutting it close...<br />Your LTV should be at least 3X your CAC");
         $("#result_box").css("background-color", "#FF4500");
         return;
