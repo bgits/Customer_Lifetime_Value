@@ -147,7 +147,7 @@ $(document).ready(function () {
       } else if (nltval < 0) {
         $("#result").html("Negitive LTV!<br />Time to rethink the model?");
         $("#result_box").css("background-color", "Crimson");
-        return;nlt
+        return;
       };
     };
     return;
