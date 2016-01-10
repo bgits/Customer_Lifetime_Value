@@ -91,11 +91,11 @@ $(document).ready(function () {
   }
 
   function discountedCashFlow () {
-    dcash = [];
-    for (yearOfCashFlow = 0; yearOfCashFlow < yearlyProfit.length; yearOfCashFlow++){
-      dcash.push(yearlyProfit[yearOfCashFlow] / Math.pow((1 + discount), yearOfCashFlow+1));
+    yearlyDiscountedCashFlow = [];
+    for (yearOfProfit = 0; yearOfProfit < yearlyProfit.length; yearOfProfit++){
+      yearlyDiscountedCashFlow.push(yearlyProfit[yearOfProfit] / Math.pow((1 + discount), yearOfProfit+1));
     }
-    window.total = dcash.reduce(function(a, b) {
+    window.total = yearlyDiscountedCashFlow.reduce(function(a, b) {
       return a + b;
     });
     /*compute terminal value */
