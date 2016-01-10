@@ -37,7 +37,6 @@ $(document).ready(function () {
     discountedCashFlow();
     window.profit = ((revenue * margin) * total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)));
     //	$("#clv")[0].scrollIntoView();
-    //        clv();
     //        nltv();
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
@@ -90,16 +89,8 @@ $(document).ready(function () {
   function parse_percent(str) {
     return parseFloat(str = (str / 100.0));
   }
-  function clv() {
-    if (!isNaN(clval)) {
-      $("#clv").html("$" + (Round2Cent(clval)));
-    } else {
-      $("#clv").html("error");
-    };
-    return
-  };
 
-    function discountedCashFlow () {
+  function discountedCashFlow () {
     dcash = [];
     for (cfyear = 0; cfyear < yearlyp.length; cfyear++){
       dcash.push(yearlyp[cfyear] / Math.pow((1 + discount), cfyear+1));
