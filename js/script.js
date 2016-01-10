@@ -52,7 +52,7 @@ $(document).ready(function () {
           strokeColor : "rgba(151,187,205,1)",
           pointColor : "rgba(151,187,205,1)",
           pointStrokeColor : "#fff",
-          data : yearlyp
+          data : yearlyProfit
         }
       ]
 
@@ -92,20 +92,20 @@ $(document).ready(function () {
 
   function discountedCashFlow () {
     dcash = [];
-    for (cfyear = 0; cfyear < yearlyp.length; cfyear++){
-      dcash.push(yearlyp[cfyear] / Math.pow((1 + discount), cfyear+1));
+    for (cfyear = 0; cfyear < yearlyProfit.length; cfyear++){
+      dcash.push(yearlyProfit[cfyear] / Math.pow((1 + discount), cfyear+1));
     }
     window.total = dcash.reduce(function(a, b) {
       return a + b;
     });
     /*compute terminal value */
-    window.terminalValue = yearlyp[year1 - 1] / discount;
+    window.terminalValue = yearlyProfit[year1 - 1] / discount;
   }
 
   function cgr() {
     total_customer = 0;
     TCC = [];
-    yearlyp = [];
+    yearlyProfit = [];
     yearlyd = [];
     years = [];
     for (year1 = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); year1++) {
@@ -113,7 +113,7 @@ $(document).ready(function () {
         final = year1;
       } else {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
-        yearlyp.push(
+        yearlyProfit.push(
           ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr))));
         yearlyd.push(
           numberWithCommas(((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)))));
