@@ -92,8 +92,8 @@ $(document).ready(function () {
 
   function discountedCashFlow () {
     dcash = [];
-    for (cfyear = 0; cfyear < yearlyProfit.length; cfyear++){
-      dcash.push(yearlyProfit[cfyear] / Math.pow((1 + discount), cfyear+1));
+    for (yearOfCashFlow = 0; yearOfCashFlow < yearlyProfit.length; yearOfCashFlow++){
+      dcash.push(yearlyProfit[yearOfCashFlow] / Math.pow((1 + discount), yearOfCashFlow+1));
     }
     window.total = dcash.reduce(function(a, b) {
       return a + b;
