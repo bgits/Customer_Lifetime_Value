@@ -15,7 +15,7 @@ $(document).ready(function () {
   //Updates when new number is entered
   $("#form input").keyup(function (event) {
     if (event.keyCode == 9) return; // 9 = tab
-    fun_list()
+    fun_list();
   });
 
   function ShowValue (selector, v) {
