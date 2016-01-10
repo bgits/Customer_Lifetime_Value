@@ -42,7 +42,7 @@ $(document).ready(function () {
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", nltval);
     ShowValue2("#car", year1);
-    ShowValue("#ltbv", (termv + total));
+    ShowValue("#ltbv", (terminalValue + total));
     var lineChartData = {
       labels : years,
       datasets : [
@@ -98,7 +98,7 @@ $(document).ready(function () {
     window.total = dcash.reduce(function(a, b) {
       return a + b;
     });
-    window.termv = yearlyp[year1 - 1] / discount /*compute terminal value */
+    window.terminalValue = yearlyp[year1 - 1] / discount; /*compute terminal value */
   }
 
   function cgr() {
