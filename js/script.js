@@ -28,10 +28,10 @@ $(document).ready(function () {
   //Functions to update on input change
   function fun_list() {
     get_values();
-    window.clval = ((revenue * margin) * (1 - churn) /
+    window.customerLifetimeValue = ((revenue * margin) * (1 - churn) /
                     (1 + discount - (1 - churn)));
     window.costPerAcquisition = ((lead + (hours * hr)) * numberOfLeads) / (closing * numberOfLeads);
-    window.nltval = clval - costPerAcquisition;
+    window.nltval = customerLifetimeValue - costPerAcquisition;
     window.leadcon = numberOfLeads * closing;
     cgr();
     discountedCashFlow();
@@ -39,7 +39,7 @@ $(document).ready(function () {
     //	$("#clv")[0].scrollIntoView();
     //        clv();
     //        nltv();
-    ShowValue("#clv", clval);
+    ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", nltval);
     ShowValue2("#car", year1);
@@ -144,11 +144,11 @@ $(document).ready(function () {
 
   function result() {
     if (revenue > 0) {
-      if (clval / costPerAcquisition >= 3) {
+      if (customerLifetimeValue / costPerAcquisition >= 3) {
         $("#result").html("Sweet Lifetime Value<br />You're doing something right!");
         $("#result_box").css("background-color", "green");
         return;
-      } else if (clval / costPerAcquisition <= 3 && clval / costPerAcquisition >= 1) {
+      } else if (customerLifetimeValue / costPerAcquisition <= 3 && customerLifetimeValue / costPerAcquisition >= 1) {
         $("#result").html("Cutting it close...<br />Your LTV should be at least 3X your CAC");
         $("#result_box").css("background-color", "#FF4500");
         return;
