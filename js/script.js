@@ -98,7 +98,8 @@ $(document).ready(function () {
     window.total = dcash.reduce(function(a, b) {
       return a + b;
     });
-    window.terminalValue = yearlyp[year1 - 1] / discount; /*compute terminal value */
+    /*compute terminal value */
+    window.terminalValue = yearlyp[year1 - 1] / discount;
   }
 
   function cgr() {
