@@ -103,21 +103,22 @@ $(document).ready(function () {
   }
 
   function cgr() {
+    debugger;
     total_customer = 0;
     TCC = [];
     yearlyProfit = [];
     yearlyd = [];
     years = [];
-    for (year1 = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); year1++) {
+    for (currentYear = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); currentYear++) {
       if ((churn * total_customer) >= (numberOfLeads * closing)) {
-        final = year1;
+        final = currentYear;
       } else {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
         yearlyProfit.push(
           ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr))));
         yearlyd.push(
           numberWithCommas(((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)))));
-        years.push(year1);
+        years.push(currentYear);
         TCC.push(total_customer);
       }
     }
