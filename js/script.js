@@ -41,7 +41,7 @@ $(document).ready(function () {
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", nltval);
-    ShowValue2("#car", year1);
+    ShowValue2("#car", currentYear);
     ShowValue("#ltbv", (terminalValue + total));
     var lineChartData = {
       labels : years,
@@ -99,7 +99,7 @@ $(document).ready(function () {
       return a + b;
     });
     /*compute terminal value */
-    window.terminalValue = yearlyProfit[year1 - 1] / discount;
+    window.terminalValue = yearlyProfit[currentYear - 1] / discount;
   }
 
   function cgr() {
@@ -108,16 +108,16 @@ $(document).ready(function () {
     yearlyProfit = [];
     yearlyd = [];
     years = [];
-    for (year1 = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); year1++) {
+    for (currentYear = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); currentYear++) {
       if ((churn * total_customer) >= (numberOfLeads * closing)) {
-        final = year1;
+        final = currentYear;
       } else {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
         yearlyProfit.push(
           ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr))));
         yearlyd.push(
           numberWithCommas(((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)))));
-        years.push(year1);
+        years.push(currentYear);
         TCC.push(total_customer);
       }
     }
