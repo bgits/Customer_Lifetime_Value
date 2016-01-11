@@ -110,6 +110,9 @@ $(document).ready(function () {
     yearlyd = [];
     years = [];
     for (currentYear = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); currentYear++) {
+      if ((churn * total_customer) >= (numberOfLeads * closing)) {
+        final = currentYear;
+      } else {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
         yearlyProfit.push(
           ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr))));
@@ -121,12 +124,14 @@ $(document).ready(function () {
     }
   }
 
+
   function nltv() {
     if (!isNaN(nltval)) {
       $("#nltv").html("$" + Round2Cent(nltval));
     } else {
       $("#nltv").html("error");
-    }
+    };
+
     return;
   };
 
