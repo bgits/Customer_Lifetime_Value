@@ -36,7 +36,7 @@ $(document).ready(function () {
     window.customerLifetimeValue = ((revenue * margin) * (1 - churn) /
                     (1 + discount - (1 - churn)));
     window.costPerAcquisition = ((lead + (hours * hr)) * numberOfLeads) / (closing * numberOfLeads);
-    window.nltval = customerLifetimeValue - costPerAcquisition;
+    window.netLifetimeValue = customerLifetimeValue - costPerAcquisition;
     window.leadcon = numberOfLeads * closing;
     cgr();
     discountedCashFlow();
@@ -45,7 +45,7 @@ $(document).ready(function () {
     //        nltv();
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
-    ShowValue("#nltv", nltval);
+    ShowValue("#nltv", netLifetimeValue);
     ShowValue2("#car", currentYear);
     ShowValue("#ltbv", (terminalValue + total));
     var lineChartData = {
@@ -130,8 +130,8 @@ $(document).ready(function () {
 
 
   function nltv() {
-    if (!isNaN(nltval)) {
-      $("#nltv").html("$" + Round2Cent(nltval));
+    if (!isNaN(netLifetimeValue)) {
+      $("#nltv").html("$" + Round2Cent(netLifetimeValue));
     } else {
       $("#nltv").html("error");
     };
@@ -149,7 +149,7 @@ $(document).ready(function () {
         $("#result").html("Cutting it close...<br />Your LTV should be at least 3X your CAC");
         $("#result_box").css("background-color", "#FF4500");
         return;
-      } else if (nltval < 0) {
+      } else if (netLifetimeValue < 0) {
         $("#result").html("Negitive LTV!<br />Time to rethink the model?");
         $("#result_box").css("background-color", "Crimson");
         return;
