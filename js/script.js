@@ -128,17 +128,6 @@ $(document).ready(function () {
     }
   }
 
-
-  function nltv() {
-    if (!isNaN(netLifetimeValue)) {
-      $("#nltv").html("$" + Round2Cent(netLifetimeValue));
-    } else {
-      $("#nltv").html("error");
-    };
-
-    return;
-  };
-
   function result() {
     if (revenue > 0) {
       if (customerLifetimeValue / costPerAcquisition >= 3) {
