@@ -23,7 +23,12 @@ $(document).ready(function () {
   }
 
   function ShowValue2 (selector, v) {
-    $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + Math.round(total_customer) + " customers. " + "Annual revenue at that time will be: $" + numberWithCommas(Round2Cent(revenue * total_customer)) + " with gross margin of $" + numberWithCommas(Round2Cent((revenue * margin) * total_customer)) + " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(profit)));
+    $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + Math.round(total_customer) +
+                     " customers. " + "Annual revenue at that time will be: $" +
+                     numberWithCommas(Round2Cent(revenue * total_customer)) +
+                     " with gross margin of $" +
+                     numberWithCommas(Round2Cent((revenue * margin) * total_customer)) +
+                     " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(profit)));
   }
   //Functions to update on input change
   function fun_list() {
