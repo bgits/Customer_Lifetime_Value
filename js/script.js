@@ -100,9 +100,9 @@ $(document).ready(function () {
     for (yearOfProfit = 0; yearOfProfit < yearlyProfit.length; yearOfProfit++){
       yearlyDiscountedCashFlow.push(yearlyProfit[yearOfProfit] / Math.pow((1 + discount), yearOfProfit+1));
     }
-    window.total = yearlyDiscountedCashFlow.reduce(function(a, b) {
-      return a + b;
-    });
+    if (yearlyDiscountedCashFlow.length) {
+      window.total = yearlyDiscountedCashFlow.reduce(function(a, b) {return a + b;});
+    }
     /*compute terminal value */
     window.terminalValue = yearlyProfit[currentYear - 1] / discount;
   }
