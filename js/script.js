@@ -9,7 +9,7 @@ function numberWithCommas(x) {
 }
 
 $(document).ready(function () {
-  $("#btext").hide();
+  $("#explanation_text").hide();
 
 
   //Updates when new number is entered
@@ -154,7 +154,7 @@ $(document).ready(function () {
   };
 
   $("#bslide").click(function () {
-    $("#btext").slideToggle("slow", function () {});
+    $("#explanation_text").slideToggle("slow", function () {});
   });
 
 });
