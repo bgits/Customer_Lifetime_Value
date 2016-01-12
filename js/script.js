@@ -109,7 +109,6 @@ $(document).ready(function () {
 
   function cgr() {
     total_customer = 0;
-    TCC = [];
     yearlyProfit = [];
     yearlyd = [];
     years = [];
@@ -123,7 +122,6 @@ $(document).ready(function () {
         yearlyd.push(
           numberWithCommas(((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)))));
         years.push(currentYear);
-        TCC.push(total_customer);
       }
     }
   }
