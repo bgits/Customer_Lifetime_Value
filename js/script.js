@@ -47,7 +47,7 @@ $(document).ready(function () {
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
     ShowValue2("#car", currentYear);
-    ShowValue("#ltbv", (terminalValue + total));
+    if(yearlyDiscountedCashFlow.length) ShowValue("#ltbv", (terminalValue + total));
     var lineChartData = {
       labels : years,
       datasets : [
