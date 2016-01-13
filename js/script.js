@@ -38,7 +38,7 @@ $(document).ready(function () {
     window.costPerAcquisition = ((lead + (hours * hr)) * numberOfLeads) / (closing * numberOfLeads);
     window.netLifetimeValue = customerLifetimeValue - costPerAcquisition;
     window.leadcon = numberOfLeads * closing;
-    cgr();
+    compoundGrowthRate();
     discountedCashFlow();
     window.profit = ((revenue * margin) * total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)));
     //	$("#clv")[0].scrollIntoView();
@@ -107,14 +107,15 @@ $(document).ready(function () {
     window.terminalValue = yearlyProfit[currentYear - 1] / discount;
   }
 
-  function cgr() {
+  function compoundGrowthRate() {
     total_customer = 0;
     yearlyProfit = [];
     years = [];
     for (currentYear = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); currentYear++) {
       if ((churn * total_customer) < (numberOfLeads * closing)) {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
-        yearlyProfit.push(
+
+         yearlyProfit.push(
           ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr))));
         years.push(currentYear);
       }
