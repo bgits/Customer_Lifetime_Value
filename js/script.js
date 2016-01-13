@@ -41,8 +41,6 @@ $(document).ready(function () {
     compoundGrowthRate();
     discountedCashFlow();
     window.profit = ((revenue * margin) * total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)));
-    //	$("#clv")[0].scrollIntoView();
-    //        nltv();
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
