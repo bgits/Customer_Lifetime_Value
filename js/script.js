@@ -35,12 +35,12 @@ $(document).ready(function () {
     get_values();
     window.customerLifetimeValue = ((revenue * margin) * (1 - churn) /
                     (1 + discount - (1 - churn)));
-    window.costPerAcquisition = ((lead + (hours * hr)) * numberOfLeads) / (closing * numberOfLeads);
+    window.costPerAcquisition = ((lead + (hours * hourlyRate)) * numberOfLeads) / (closing * numberOfLeads);
     window.netLifetimeValue = customerLifetimeValue - costPerAcquisition;
     window.leadcon = numberOfLeads * closing;
     endOfGrowth();
     discountedCashFlow();
-    window.profit = ((revenue * margin) * total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)));
+    window.profit = ((revenue * margin) * total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)));
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
@@ -79,7 +79,7 @@ $(document).ready(function () {
     window.lead = parse_currency($("#form input[name='lead']").val());
     window.closing = parse_percent($("#form input[name='closing']").val());
     window.hours = parse_currency($("#form input[name='hours']").val());
-    window.hr = parse_currency($("#form input[name='hr']").val());
+    window.hourlyRate = parse_currency($("#form input[name='hourlyRate']").val());
     window.numberOfLeads = parse_currency($("#form input[name='numberOfLeads']").val());
 
   };
@@ -114,7 +114,7 @@ $(document).ready(function () {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
 
         yearlyProfit.push(
-          ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)))
+          ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
         );
 
         years.push(currentYear);
