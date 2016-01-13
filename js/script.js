@@ -113,8 +113,10 @@ $(document).ready(function () {
       if ((churn * total_customer) < (numberOfLeads * closing)) {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
 
-         yearlyProfit.push(
-          ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr))));
+        yearlyProfit.push(
+          ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hr)))
+        );
+
         years.push(currentYear);
       }
     }
