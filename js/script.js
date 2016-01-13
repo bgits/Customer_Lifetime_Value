@@ -15,7 +15,7 @@ $(document).ready(function () {
   //Updates when new number is entered
   $("#form input").keyup(function (event) {
     if (event.keyCode == 9) return; // 9 = tab
-    fun_list();
+    updateValues();
   });
 
   function ShowValue (selector, v) {
@@ -31,7 +31,7 @@ $(document).ready(function () {
                      " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(profit)));
   }
   //Functions to update on input change
-  function fun_list() {
+  function updateValues() {
     get_values();
     window.customerLifetimeValue = ((revenue * margin) * (1 - churn) /
                     (1 + discount - (1 - churn)));
