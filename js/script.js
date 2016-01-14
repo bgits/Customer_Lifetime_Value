@@ -2,6 +2,10 @@ var valueStore = {
   years : []
 };
 
+var resetValues = function() {
+  valueStore.years = [];
+};
+
 function Round2Cent(v) {
   return Math.round(v*100)/100;
 }
