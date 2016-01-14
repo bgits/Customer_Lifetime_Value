@@ -40,6 +40,7 @@ $(document).ready(function () {
   }
   //Functions to update on input change
   function updateValues() {
+    resetValues();
     get_values();
     window.customerLifetimeValue = ((revenue * margin) * (1 - churn) /
                     (1 + discount - (1 - churn)));
