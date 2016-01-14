@@ -40,7 +40,6 @@ $(document).ready(function () {
   }
   //Functions to update on input change
   function updateValues() {
-    resetValues();
     get_values();
     window.customerLifetimeValue = ((get_values.revenue * margin) * (1 - churn) /
                     (1 + discount - (1 - churn)));
@@ -81,17 +80,16 @@ $(document).ready(function () {
   // updates values
 
   function get_values() {
-    return {
-      revenue : parse_currency($("#form input[name='revenue']").val()),
-      margin : parse_percent($("#form input[name='margin']").val()),
-      churn : parse_percent($("#form input[name='churn']").val()),
-      discount : parse_percent($("#form input[name='discount']").val()),
-      lead : parse_currency($("#form input[name='lead']").val()),
-      closing : parse_percent($("#form input[name='closing']").val()),
-      hours : parse_currency($("#form input[name='hours']").val()),
-      hourlyRate : parse_currency($("#form input[name='hourlyRate']").val()),
-      numberOfLeads : parse_currency($("#form input[name='numberOfLeads']").val())
-    };
+    window.revenue = parse_currency($("#form input[name='revenue']").val());
+    window.margin = parse_percent($("#form input[name='margin']").val());
+    window.churn = parse_percent($("#form input[name='churn']").val());
+    window.discount = parse_percent($("#form input[name='discount']").val());
+    window.lead = parse_currency($("#form input[name='lead']").val());
+    window.closing = parse_percent($("#form input[name='closing']").val());
+    window.hours = parse_currency($("#form input[name='hours']").val());
+    window.hourlyRate = parse_currency($("#form input[name='hourlyRate']").val());
+    window.numberOfLeads = parse_currency($("#form input[name='numberOfLeads']").val());
+
   };
 
   // Takes a string like "$123,456.789" and returns 123456.789 - from start-up death clock
