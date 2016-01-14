@@ -1,3 +1,5 @@
+var valueStore = new Object();
+
 function Round2Cent(v) {
   return Math.round(v*100)/100;
 }
