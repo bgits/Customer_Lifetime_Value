@@ -1,4 +1,6 @@
-var valueStore = new Object();
+var valueStore = {
+  years : []
+};
 
 function Round2Cent(v) {
   return Math.round(v*100)/100;
@@ -110,7 +112,6 @@ $(document).ready(function () {
   function endOfGrowth() {
     total_customer = 0;
     yearlyProfit = [];
-    years = [];
     for (currentYear = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); currentYear++) {
       if ((churn * total_customer) < (numberOfLeads * closing)) {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
