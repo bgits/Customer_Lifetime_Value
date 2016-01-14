@@ -51,7 +51,7 @@ $(document).ready(function () {
     ShowValue2("#car", currentYear);
     if(yearlyDiscountedCashFlow.length) ShowValue("#ltbv", (terminalValue + total));
     var lineChartData = {
-      labels : years,
+      labels : valueStore.years,
       datasets : [
 
         {
@@ -120,7 +120,7 @@ $(document).ready(function () {
           ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
         );
 
-        years.push(currentYear);
+        valueStore.years.push(currentYear);
       }
     }
   }
