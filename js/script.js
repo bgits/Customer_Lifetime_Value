@@ -30,7 +30,7 @@ $(document).ready(function () {
     $(selector).html(isNaN(v) ? "Error" : "$" + numberWithCommas(Round2Cent(v)));
   }
 
-  function ShowValue2 (selector, v) {
+  function showEndOfGrowth (selector, v) {
     $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + Math.round(total_customer) +
                      " customers. " + "Annual revenue at that time will be: $" +
                      numberWithCommas(Round2Cent(revenue * total_customer)) +
@@ -53,7 +53,7 @@ $(document).ready(function () {
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
-    ShowValue2("#churn_exceed_acq", currentYear);
+    showEndOfGrowth("#churn_exceed_acq", currentYear);
     if(yearlyDiscountedCashFlow.length) ShowValue("#ltbv", (valueStore.terminalValue + total));
     var lineChartData = {
       labels : valueStore.years,
