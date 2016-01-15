@@ -1,5 +1,6 @@
 var valueStore = {
-  years : []
+  years : [],
+  yearlyProfit : []
 };
 
 var resetValues = function() {
@@ -116,7 +117,6 @@ $(document).ready(function () {
 
   function endOfGrowth() {
     total_customer = 0;
-    yearlyProfit = [];
     for (currentYear = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); currentYear++) {
       if ((churn * total_customer) < (numberOfLeads * closing)) {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
