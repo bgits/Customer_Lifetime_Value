@@ -66,7 +66,7 @@ $(document).ready(function () {
           strokeColor : "rgba(151,187,205,1)",
           pointColor : "rgba(151,187,205,1)",
           pointStrokeColor : "#fff",
-          data : yearlyProfit
+          data : valueStore.yearlyProfit
         }
       ]
 
@@ -106,14 +106,14 @@ $(document).ready(function () {
 
   function discountedCashFlow () {
     yearlyDiscountedCashFlow = [];
-    for (yearOfProfit = 0; yearOfProfit < yearlyProfit.length; yearOfProfit++){
-      yearlyDiscountedCashFlow.push(yearlyProfit[yearOfProfit] / Math.pow((1 + discount), yearOfProfit+1));
+    for (yearOfProfit = 0; yearOfProfit < valueStore.yearlyProfit.length; yearOfProfit++){
+      yearlyDiscountedCashFlow.push(valueStore.yearlyProfit[yearOfProfit] / Math.pow((1 + discount), yearOfProfit+1));
     }
     if (yearlyDiscountedCashFlow.length) {
       window.total = yearlyDiscountedCashFlow.reduce(function(a, b) {return a + b;});
     }
     /*compute terminal value */
-    valueStore.terminalValue = yearlyProfit[currentYear - 1] / discount;
+    valueStore.terminalValue = valueStore.yearlyProfit[currentYear - 1] / discount;
   }
 
   function endOfGrowth() {
@@ -122,7 +122,7 @@ $(document).ready(function () {
       if ((churn * total_customer) < (numberOfLeads * closing)) {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
 
-        yearlyProfit.push(
+        valueStore.yearlyProfit.push(
           ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
         );
 
