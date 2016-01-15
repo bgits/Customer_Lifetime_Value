@@ -5,6 +5,7 @@ var valueStore = {
 
 var resetValues = function() {
   valueStore.years = [];
+  valueStore.yearlyProfit = [];
 };
 
 function Round2Cent(v) {
