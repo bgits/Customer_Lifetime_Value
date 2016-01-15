@@ -35,11 +35,11 @@ $(document).ready(function () {
   }
 
   function showEndOfGrowth (selector, v) {
-    $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + Math.round(total_customer) +
+    $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + Math.round(valueStore.total_customer) +
                      " customers. " + "Annual revenue at that time will be: $" +
-                     numberWithCommas(Round2Cent(revenue * total_customer)) +
+                     numberWithCommas(Round2Cent(revenue * valueStore.total_customer)) +
                      " with gross margin of $" +
-                     numberWithCommas(Round2Cent((revenue * margin) * total_customer)) +
+                     numberWithCommas(Round2Cent((revenue * margin) * valueStore.total_customer)) +
                      " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(profit)));
   }
   //Functions to update on input change
@@ -53,7 +53,7 @@ $(document).ready(function () {
     window.leadcon = numberOfLeads * closing;
     endOfGrowth();
     discountedCashFlow();
-    window.profit = ((revenue * margin) * total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)));
+    window.profit = ((revenue * margin) * valueStore.total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)));
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
@@ -119,12 +119,12 @@ $(document).ready(function () {
   }
 
   function endOfGrowth() {
-    for (currentYear = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); currentYear++) {
-      if ((churn * total_customer) < (numberOfLeads * closing)) {
-        total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
+    for (currentYear = 0; Math.ceil(churn * valueStore.total_customer) < (numberOfLeads * closing); currentYear++) {
+      if ((churn * valueStore.total_customer) < (numberOfLeads * closing)) {
+        valueStore.total_customer = (valueStore.total_customer + (numberOfLeads * closing)) - (churn * valueStore.total_customer);
 
         valueStore.yearlyProfit.push(
-          ((revenue * margin) * total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
+          ((revenue * margin) * valueStore.total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
         );
 
         valueStore.years.push(currentYear);
