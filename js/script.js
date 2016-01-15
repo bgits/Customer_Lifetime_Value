@@ -53,7 +53,7 @@ $(document).ready(function () {
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
-    ShowValue2("#car", currentYear);
+    ShowValue2("#churn_exceed_acq", currentYear);
     if(yearlyDiscountedCashFlow.length) ShowValue("#ltbv", (valueStore.terminalValue + total));
     var lineChartData = {
       labels : valueStore.years,
