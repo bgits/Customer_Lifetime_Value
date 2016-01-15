@@ -54,7 +54,7 @@ $(document).ready(function () {
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
     ShowValue2("#car", currentYear);
-    if(yearlyDiscountedCashFlow.length) ShowValue("#ltbv", (terminalValue + total));
+    if(yearlyDiscountedCashFlow.length) ShowValue("#ltbv", (valueStore.terminalValue + total));
     var lineChartData = {
       labels : valueStore.years,
       datasets : [
@@ -111,7 +111,7 @@ $(document).ready(function () {
       window.total = yearlyDiscountedCashFlow.reduce(function(a, b) {return a + b;});
     }
     /*compute terminal value */
-    window.terminalValue = yearlyProfit[currentYear - 1] / discount;
+    valueStore.terminalValue = yearlyProfit[currentYear - 1] / discount;
   }
 
   function endOfGrowth() {
