@@ -1,11 +1,13 @@
 var valueStore = {
   years : [],
-  yearlyProfit : []
+  yearlyProfit : [],
+  total_customer : 0
 };
 
 var resetValues = function() {
   valueStore.years = [];
   valueStore.yearlyProfit = [];
+  total_customer = 0;
 };
 
 function Round2Cent(v) {
@@ -117,7 +119,6 @@ $(document).ready(function () {
   }
 
   function endOfGrowth() {
-    total_customer = 0;
     for (currentYear = 0; Math.ceil(churn * total_customer) < (numberOfLeads * closing); currentYear++) {
       if ((churn * total_customer) < (numberOfLeads * closing)) {
         total_customer = (total_customer + (numberOfLeads * closing)) - (churn * total_customer);
