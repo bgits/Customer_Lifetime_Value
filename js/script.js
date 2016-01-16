@@ -121,7 +121,6 @@ $(document).ready(function () {
   function endOfGrowth() {
     // TODO  Need to consider manhours
     for (currentYear = 0; Math.ceil(churn * valueStore.total_customer) < (numberOfLeads * closing); currentYear++) {
-      if ((churn * valueStore.total_customer) < (numberOfLeads * closing)) {
         valueStore.total_customer = (valueStore.total_customer + (numberOfLeads * closing)) - (churn * valueStore.total_customer);
 
         valueStore.yearlyProfit.push(
@@ -129,7 +128,6 @@ $(document).ready(function () {
         );
 
         valueStore.years.push(currentYear);
-      }
     }
   }
 
