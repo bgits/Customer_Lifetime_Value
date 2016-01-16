@@ -85,7 +85,7 @@ $(document).ready(function () {
   // updates values
 
   function get_values() {
-    window.revenue = parse_currency($("#form input[name='revenue']").val());
+    valueStore.revenue = parse_currency($("#form input[name='revenue']").val());
     window.margin = parse_percent($("#form input[name='margin']").val());
     window.churn = parse_percent($("#form input[name='churn']").val());
     window.discount = parse_percent($("#form input[name='discount']").val());
