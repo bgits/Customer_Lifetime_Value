@@ -57,7 +57,7 @@ $(document).ready(function () {
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
-    showEndOfGrowth("#churn_exceed_acq", currentYear);
+    showEndOfGrowth("#churn_exceed_acq", valueStore.currentYear);
     if(yearlyDiscountedCashFlow.length) ShowValue("#ltbv", (valueStore.terminalValue + total));
     var lineChartData = {
       labels : valueStore.years,
@@ -115,19 +115,19 @@ $(document).ready(function () {
       window.total = yearlyDiscountedCashFlow.reduce(function(a, b) {return a + b;});
     }
     /*compute terminal value */
-    valueStore.terminalValue = valueStore.yearlyProfit[currentYear - 1] / discount;
+    valueStore.terminalValue = valueStore.yearlyProfit[valueStore.currentYear - 1] / discount;
   }
 
   function endOfGrowth() {
     // TODO  Need to consider manhours
-    for (currentYear = 0; Math.ceil(churn * valueStore.total_customer) < (numberOfLeads * closing); currentYear++) {
+    for (valueStore.currentYear = 0; Math.ceil(churn * valueStore.total_customer) < (numberOfLeads * closing); valueStore.currentYear++) {
         valueStore.total_customer = (valueStore.total_customer + (numberOfLeads * closing)) - (churn * valueStore.total_customer);
 
         valueStore.yearlyProfit.push(
           ((valueStore.revenue * margin) * valueStore.total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
         );
 
-        valueStore.years.push(currentYear);
+        valueStore.years.push(valueStore.currentYear);
     }
   }
 
