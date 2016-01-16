@@ -37,23 +37,23 @@ $(document).ready(function () {
   function showEndOfGrowth (selector, v) {
     $(selector).html(isNaN(v) ? "Error" : v + " Years " + "with " + Math.round(valueStore.total_customer) +
                      " customers. " + "Annual revenue at that time will be: $" +
-                     numberWithCommas(Round2Cent(revenue * valueStore.total_customer)) +
+                     numberWithCommas(Round2Cent(valueStore.revenue * valueStore.total_customer)) +
                      " with gross margin of $" +
-                     numberWithCommas(Round2Cent((revenue * margin) * valueStore.total_customer)) +
+                     numberWithCommas(Round2Cent((valueStore.revenue * margin) * valueStore.total_customer)) +
                      " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(profit)));
   }
   //Functions to update on input change
   function updateValues() {
     resetValues();
     get_values();
-    window.customerLifetimeValue = ((revenue * margin) * (1 - churn) /
+    window.customerLifetimeValue = ((valueStore.revenue * margin) * (1 - churn) /
                     (1 + discount - (1 - churn)));
     window.costPerAcquisition = ((lead + (hours * hourlyRate)) * numberOfLeads) / (closing * numberOfLeads);
     window.netLifetimeValue = customerLifetimeValue - costPerAcquisition;
     window.leadcon = numberOfLeads * closing;
     endOfGrowth();
     discountedCashFlow();
-    window.profit = ((revenue * margin) * valueStore.total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)));
+    window.profit = ((valueStore.revenue * margin) * valueStore.total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)));
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
@@ -124,7 +124,7 @@ $(document).ready(function () {
         valueStore.total_customer = (valueStore.total_customer + (numberOfLeads * closing)) - (churn * valueStore.total_customer);
 
         valueStore.yearlyProfit.push(
-          ((revenue * margin) * valueStore.total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
+          ((valueStore.revenue * margin) * valueStore.total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
         );
 
         valueStore.years.push(currentYear);
@@ -133,7 +133,7 @@ $(document).ready(function () {
   }
 
   function result() {
-    if (revenue > 0) {
+    if (valueStore.revenue > 0) {
       if (customerLifetimeValue / costPerAcquisition >= 3) {
         $("#result").html("Sweet Lifetime Value<br />You're doing something right!");
         $("#result_box").css("background-color", "green");
