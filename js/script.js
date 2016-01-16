@@ -7,7 +7,7 @@ var valueStore = {
 var resetValues = function() {
   valueStore.years = [];
   valueStore.yearlyProfit = [];
-  total_customer = 0;
+  valueStore.total_customer = 0;
 };
 
 function Round2Cent(v) {
