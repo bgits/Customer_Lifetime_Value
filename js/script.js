@@ -39,21 +39,21 @@ $(document).ready(function () {
                      " customers. " + "Annual revenue at that time will be: $" +
                      numberWithCommas(Round2Cent(valueStore.revenue * valueStore.total_customer)) +
                      " with gross margin of $" +
-                     numberWithCommas(Round2Cent((valueStore.revenue * margin) * valueStore.total_customer)) +
+                     numberWithCommas(Round2Cent((valueStore.revenue * valueStore.margin) * valueStore.total_customer)) +
                      " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(profit)));
   }
   //Functions to update on input change
   function updateValues() {
     resetValues();
     get_values();
-    window.customerLifetimeValue = ((valueStore.revenue * margin) * (1 - churn) /
+    window.customerLifetimeValue = ((valueStore.revenue * valueStore.margin) * (1 - churn) /
                     (1 + discount - (1 - churn)));
     window.costPerAcquisition = ((lead + (hours * hourlyRate)) * numberOfLeads) / (closing * numberOfLeads);
     window.netLifetimeValue = customerLifetimeValue - costPerAcquisition;
     window.leadcon = numberOfLeads * closing;
     endOfGrowth();
     discountedCashFlow();
-    window.profit = ((valueStore.revenue * margin) * valueStore.total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)));
+    window.profit = ((valueStore.revenue * valueStore.margin) * valueStore.total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)));
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
@@ -86,7 +86,7 @@ $(document).ready(function () {
 
   function get_values() {
     valueStore.revenue = parse_currency($("#form input[name='revenue']").val());
-    window.margin = parse_percent($("#form input[name='margin']").val());
+    valueStore.margin = parse_percent($("#form input[name='margin']").val());
     window.churn = parse_percent($("#form input[name='churn']").val());
     window.discount = parse_percent($("#form input[name='discount']").val());
     window.lead = parse_currency($("#form input[name='lead']").val());
@@ -124,7 +124,7 @@ $(document).ready(function () {
         valueStore.total_customer = (valueStore.total_customer + (numberOfLeads * closing)) - (churn * valueStore.total_customer);
 
         valueStore.yearlyProfit.push(
-          ((valueStore.revenue * margin) * valueStore.total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
+          ((valueStore.revenue * valueStore.margin) * valueStore.total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
         );
 
         valueStore.years.push(valueStore.currentYear);
