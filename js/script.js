@@ -47,7 +47,7 @@ $(document).ready(function () {
     resetValues();
     get_values();
     window.customerLifetimeValue = ((valueStore.revenue * valueStore.margin) * (1 - valueStore.churn) /
-                    (1 + discount - (1 - valueStore.churn)));
+                    (1 + valueStore.discount - (1 - valueStore.churn)));
     window.costPerAcquisition = ((lead + (hours * hourlyRate)) * numberOfLeads) / (closing * numberOfLeads);
     window.netLifetimeValue = customerLifetimeValue - costPerAcquisition;
     window.leadcon = numberOfLeads * closing;
@@ -88,7 +88,7 @@ $(document).ready(function () {
     valueStore.revenue = parse_currency($("#form input[name='revenue']").val());
     valueStore.margin = parse_percent($("#form input[name='margin']").val());
     valueStore.churn = parse_percent($("#form input[name='churn']").val());
-    window.discount = parse_percent($("#form input[name='discount']").val());
+    valueStore.discount = parse_percent($("#form input[name='discount']").val());
     window.lead = parse_currency($("#form input[name='lead']").val());
     window.closing = parse_percent($("#form input[name='closing']").val());
     window.hours = parse_currency($("#form input[name='hours']").val());
@@ -109,13 +109,13 @@ $(document).ready(function () {
   function discountedCashFlow () {
     yearlyDiscountedCashFlow = [];
     for (yearOfProfit = 0; yearOfProfit < valueStore.yearlyProfit.length; yearOfProfit++){
-      yearlyDiscountedCashFlow.push(valueStore.yearlyProfit[yearOfProfit] / Math.pow((1 + discount), yearOfProfit+1));
+      yearlyDiscountedCashFlow.push(valueStore.yearlyProfit[yearOfProfit] / Math.pow((1 + valueStore.discount), yearOfProfit+1));
     }
     if (yearlyDiscountedCashFlow.length) {
       window.total = yearlyDiscountedCashFlow.reduce(function(a, b) {return a + b;});
     }
     /*compute terminal value */
-    valueStore.terminalValue = valueStore.yearlyProfit[valueStore.currentYear - 1] / discount;
+    valueStore.terminalValue = valueStore.yearlyProfit[valueStore.currentYear - 1] / valueStore.discount;
   }
 
   function endOfGrowth() {
