@@ -48,12 +48,12 @@ $(document).ready(function () {
     get_values();
     window.customerLifetimeValue = ((valueStore.revenue * valueStore.margin) * (1 - valueStore.churn) /
                     (1 + valueStore.discount - (1 - valueStore.churn)));
-    window.costPerAcquisition = ((lead + (hours * hourlyRate)) * numberOfLeads) / (closing * numberOfLeads);
+    window.costPerAcquisition = ((valueStore.lead + (hours * hourlyRate)) * numberOfLeads) / (closing * numberOfLeads);
     window.netLifetimeValue = customerLifetimeValue - costPerAcquisition;
     window.leadcon = numberOfLeads * closing;
     endOfGrowth();
     discountedCashFlow();
-    window.profit = ((valueStore.revenue * valueStore.margin) * valueStore.total_customer)  - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)));
+    window.profit = ((valueStore.revenue * valueStore.margin) * valueStore.total_customer)  - ((numberOfLeads * valueStore.lead) + (numberOfLeads * (hours * hourlyRate)));
     ShowValue("#clv", customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
@@ -89,7 +89,7 @@ $(document).ready(function () {
     valueStore.margin = parse_percent($("#form input[name='margin']").val());
     valueStore.churn = parse_percent($("#form input[name='churn']").val());
     valueStore.discount = parse_percent($("#form input[name='discount']").val());
-    window.lead = parse_currency($("#form input[name='lead']").val());
+    window.valueStore.lead = parse_currency($("#form input[name='lead']").val());
     window.closing = parse_percent($("#form input[name='closing']").val());
     window.hours = parse_currency($("#form input[name='hours']").val());
     window.hourlyRate = parse_currency($("#form input[name='hourlyRate']").val());
@@ -124,7 +124,7 @@ $(document).ready(function () {
         valueStore.total_customer = (valueStore.total_customer + (numberOfLeads * closing)) - (valueStore.churn * valueStore.total_customer);
 
         valueStore.yearlyProfit.push(
-          ((valueStore.revenue * valueStore.margin) * valueStore.total_customer) - ((numberOfLeads * lead) + (numberOfLeads * (hours * hourlyRate)))
+          ((valueStore.revenue * valueStore.margin) * valueStore.total_customer) - ((numberOfLeads * valueStore.lead) + (numberOfLeads * (hours * hourlyRate)))
         );
 
         valueStore.years.push(valueStore.currentYear);
