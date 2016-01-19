@@ -48,9 +48,9 @@ $(document).ready(function () {
     get_values();
     window.customerLifetimeValue = ((valueStore.revenue * valueStore.margin) * (1 - valueStore.churn) /
                     (1 + valueStore.discount - (1 - valueStore.churn)));
-    window.costPerAcquisition = ((valueStore.lead + (hours * hourlyRate)) * numberOfLeads) / (closing * numberOfLeads);
+    window.costPerAcquisition = ((valueStore.lead + (hours * hourlyRate)) * numberOfLeads) / (valueStore.closing * numberOfLeads);
     window.netLifetimeValue = customerLifetimeValue - costPerAcquisition;
-    window.leadcon = numberOfLeads * closing;
+    window.leadcon = numberOfLeads * valueStore.closing;
     endOfGrowth();
     discountedCashFlow();
     window.profit = ((valueStore.revenue * valueStore.margin) * valueStore.total_customer)  - ((numberOfLeads * valueStore.lead) + (numberOfLeads * (hours * hourlyRate)));
@@ -90,7 +90,7 @@ $(document).ready(function () {
     valueStore.churn = parse_percent($("#form input[name='churn']").val());
     valueStore.discount = parse_percent($("#form input[name='discount']").val());
     window.valueStore.lead = parse_currency($("#form input[name='lead']").val());
-    window.closing = parse_percent($("#form input[name='closing']").val());
+    valueStore.closing = parse_percent($("#form input[name='closing']").val());
     window.hours = parse_currency($("#form input[name='hours']").val());
     window.hourlyRate = parse_currency($("#form input[name='hourlyRate']").val());
     window.numberOfLeads = parse_currency($("#form input[name='numberOfLeads']").val());
@@ -120,8 +120,8 @@ $(document).ready(function () {
 
   function endOfGrowth() {
     // TODO  Need to consider manhours
-    for (valueStore.currentYear = 0; Math.ceil(valueStore.churn * valueStore.total_customer) < (numberOfLeads * closing); valueStore.currentYear++) {
-        valueStore.total_customer = (valueStore.total_customer + (numberOfLeads * closing)) - (valueStore.churn * valueStore.total_customer);
+    for (valueStore.currentYear = 0; Math.ceil(valueStore.churn * valueStore.total_customer) < (numberOfLeads * valueStore.closing); valueStore.currentYear++) {
+        valueStore.total_customer = (valueStore.total_customer + (numberOfLeads * valueStore.closing)) - (valueStore.churn * valueStore.total_customer);
 
         valueStore.yearlyProfit.push(
           ((valueStore.revenue * valueStore.margin) * valueStore.total_customer) - ((numberOfLeads * valueStore.lead) + (numberOfLeads * (hours * hourlyRate)))
