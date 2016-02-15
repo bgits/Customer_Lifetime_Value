@@ -54,7 +54,7 @@ $(document).ready(function () {
     endOfGrowth();
     discountedCashFlow();
     window.profit = ((valueStore.revenue * valueStore.margin) * valueStore.total_customer)  - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)));
-    ShowValue("#clv", customerLifetimeValue);
+    ShowValue("#clv", valueStore.customerLifetimeValue);
     ShowValue("#cpa", costPerAcquisition);
     ShowValue("#nltv", netLifetimeValue);
     showEndOfGrowth("#churn_exceed_acq", valueStore.currentYear);
