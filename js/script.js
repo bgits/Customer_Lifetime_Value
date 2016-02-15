@@ -89,7 +89,7 @@ $(document).ready(function () {
     valueStore.margin = parse_percent($("#form input[name='margin']").val());
     valueStore.churn = parse_percent($("#form input[name='churn']").val());
     valueStore.discount = parse_percent($("#form input[name='discount']").val());
-    window.valueStore.lead = parse_currency($("#form input[name='lead']").val());
+    valueStore.lead = parse_currency($("#form input[name='lead']").val());
     valueStore.closing = parse_percent($("#form input[name='closing']").val());
     window.hours = parse_currency($("#form input[name='hours']").val());
     window.hourlyRate = parse_currency($("#form input[name='hourlyRate']").val());
