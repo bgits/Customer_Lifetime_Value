@@ -46,10 +46,10 @@ $(document).ready(function () {
   function updateValues() {
     resetValues();
     get_values();
-    window.customerLifetimeValue = ((valueStore.revenue * valueStore.margin) * (1 - valueStore.churn) /
+    valueStore.customerLifetimeValue = ((valueStore.revenue * valueStore.margin) * (1 - valueStore.churn) /
                     (1 + valueStore.discount - (1 - valueStore.churn)));
     window.costPerAcquisition = ((valueStore.lead + (valueStore.hours * valueStore.hourlyRate)) * valueStore.numberOfLeads) / (valueStore.closing * valueStore.numberOfLeads);
-    window.netLifetimeValue = customerLifetimeValue - costPerAcquisition;
+    window.netLifetimeValue = valueStore.customerLifetimeValue - costPerAcquisition;
     window.leadcon = valueStore.numberOfLeads * valueStore.closing;
     endOfGrowth();
     discountedCashFlow();
@@ -133,11 +133,11 @@ $(document).ready(function () {
 
   function result() {
     if (valueStore.revenue > 0) {
-      if (customerLifetimeValue / costPerAcquisition >= 3) {
+      if (valueStore.customerLifetimeValue / costPerAcquisition >= 3) {
         $("#result").html("Sweet Lifetime Value<br />You're doing something right!");
         $("#result_box").css("background-color", "green");
         return;
-      } else if (customerLifetimeValue / costPerAcquisition <= 3 && customerLifetimeValue / costPerAcquisition >= 1) {
+      } else if (valueStore.customerLifetimeValue / costPerAcquisition <= 3 && valueStore.customerLifetimeValue / costPerAcquisition >= 1) {
         $("#result").html("Cutting it close...<br />Your LTV should be at least 3X your CAC");
         $("#result_box").css("background-color", "#FF4500");
         return;
