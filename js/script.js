@@ -49,13 +49,13 @@ $(document).ready(function () {
     valueStore.customerLifetimeValue = ((valueStore.revenue * valueStore.margin) * (1 - valueStore.churn) /
                     (1 + valueStore.discount - (1 - valueStore.churn)));
     valueStore.costPerAcquisition = ((valueStore.lead + (valueStore.hours * valueStore.hourlyRate)) * valueStore.numberOfLeads) / (valueStore.closing * valueStore.numberOfLeads);
-    window.netLifetimeValue = valueStore.customerLifetimeValue - valueStore.costPerAcquisition;
+    valueStore.netLifetimeValue = valueStore.customerLifetimeValue - valueStore.costPerAcquisition;
     endOfGrowth();
     discountedCashFlow();
     window.profit = ((valueStore.revenue * valueStore.margin) * valueStore.total_customer)  - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)));
     ShowValue("#clv", valueStore.customerLifetimeValue);
     ShowValue("#cpa", valueStore.costPerAcquisition);
-    ShowValue("#nltv", netLifetimeValue);
+    ShowValue("#nltv", valueStore.netLifetimeValue);
     showEndOfGrowth("#churn_exceed_acq", valueStore.currentYear);
     if(yearlyDiscountedCashFlow.length) ShowValue("#ltbv", (valueStore.terminalValue + total));
     var lineChartData = {
@@ -140,7 +140,7 @@ $(document).ready(function () {
         $("#result").html("Cutting it close...<br />Your LTV should be at least 3X your CAC");
         $("#result_box").css("background-color", "#FF4500");
         return;
-      } else if (netLifetimeValue < 0) {
+      } else if (valueStore.netLifetimeValue < 0) {
         $("#result").html("Negitive LTV!<br />Time to rethink the model?");
         $("#result_box").css("background-color", "Crimson");
         return;
