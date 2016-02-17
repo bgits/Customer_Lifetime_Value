@@ -40,7 +40,7 @@ $(document).ready(function () {
                      numberWithCommas(Round2Cent(valueStore.revenue * valueStore.total_customer)) +
                      " with gross margin of $" +
                      numberWithCommas(Round2Cent((valueStore.revenue * valueStore.margin) * valueStore.total_customer)) +
-                     " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(profit)));
+                     " and " + "annual profit" + " of: $" + numberWithCommas(Round2Cent(valueStore.profit)));
   }
   //Functions to update on input change
   function updateValues() {
@@ -52,7 +52,7 @@ $(document).ready(function () {
     valueStore.netLifetimeValue = valueStore.customerLifetimeValue - valueStore.costPerAcquisition;
     endOfGrowth();
     discountedCashFlow();
-    window.profit = ((valueStore.revenue * valueStore.margin) * valueStore.total_customer)  - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)));
+    valueStore.profit = ((valueStore.revenue * valueStore.margin) * valueStore.total_customer)  - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)));
     ShowValue("#clv", valueStore.customerLifetimeValue);
     ShowValue("#cpa", valueStore.costPerAcquisition);
     ShowValue("#nltv", valueStore.netLifetimeValue);
