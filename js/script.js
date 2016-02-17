@@ -50,7 +50,6 @@ $(document).ready(function () {
                     (1 + valueStore.discount - (1 - valueStore.churn)));
     valueStore.costPerAcquisition = ((valueStore.lead + (valueStore.hours * valueStore.hourlyRate)) * valueStore.numberOfLeads) / (valueStore.closing * valueStore.numberOfLeads);
     window.netLifetimeValue = valueStore.customerLifetimeValue - valueStore.costPerAcquisition;
-    window.leadcon = valueStore.numberOfLeads * valueStore.closing;
     endOfGrowth();
     discountedCashFlow();
     window.profit = ((valueStore.revenue * valueStore.margin) * valueStore.total_customer)  - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)));
