@@ -57,7 +57,7 @@ $(document).ready(function () {
     ShowValue("#cpa", valueStore.costPerAcquisition);
     ShowValue("#nltv", valueStore.netLifetimeValue);
     showEndOfGrowth("#churn_exceed_acq", valueStore.currentYear);
-    if(yearlyDiscountedCashFlow.length) ShowValue("#ltbv", (valueStore.terminalValue + total));
+    if(yearlyDiscountedCashFlow.length) ShowValue("#ltbv", (valueStore.terminalValue + valueStore.total));
     var lineChartData = {
       labels : valueStore.years,
       datasets : [
@@ -111,7 +111,7 @@ $(document).ready(function () {
       yearlyDiscountedCashFlow.push(valueStore.yearlyProfit[yearOfProfit] / Math.pow((1 + valueStore.discount), yearOfProfit+1));
     }
     if (yearlyDiscountedCashFlow.length) {
-      window.total = yearlyDiscountedCashFlow.reduce(function(a, b) {return a + b;});
+      valueStore.total = yearlyDiscountedCashFlow.reduce(function(a, b) {return a + b;});
     }
     /*compute terminal value */
     valueStore.terminalValue = valueStore.yearlyProfit[valueStore.currentYear - 1] / valueStore.discount;
