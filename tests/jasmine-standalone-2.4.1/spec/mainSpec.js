@@ -10,7 +10,7 @@ describe("resetValues", function() {
   });
 });
 
-describe("valueStore.customerLifetimeValue", function() {
+describe("valueStore.customerLifetimeValue()", function() {
 
   beforeEach(function() {
     valueStore.revenue = 30;
@@ -18,12 +18,9 @@ describe("valueStore.customerLifetimeValue", function() {
     valueStore.churn = .1;
     valueStore.discount = .1;
     valueStore.costPerAcquisition = 843.3333333333334;
-    valueStore.customerLifetimeValue = ((valueStore.revenue * valueStore.margin) * (1 - valueStore.churn) /
-                                        (1 + valueStore.discount - (1 - valueStore.churn)));
-
   });
 
   it("it should calculate the customer lifetime value", function() {
-    expect(valueStore.customerLifetimeValue).toEqual(13.499999999999996);
+    expect(valueStore.customerLifetimeValue()).toEqual(13.499999999999996);
   });
 });
