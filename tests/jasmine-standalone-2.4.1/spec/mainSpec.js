@@ -39,3 +39,5 @@ describe("valueStore.costPerAcquisition()", function() {
   });
 });
 
+//TODO add tests discountedCashFlow()
+//TODO add tests endOfGrowth()
