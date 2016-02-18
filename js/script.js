@@ -1,7 +1,11 @@
 var valueStore = {
   years : [],
   yearlyProfit : [],
-  total_customer : 0
+  total_customer : 0,
+  customerLifetimeValue : function(){
+    return ((this.revenue * this.margin) * (1 - this.churn) /
+            (1 + this.discount - (1 - this.churn)));
+  }
 };
 
 var resetValues = function() {
@@ -46,14 +50,13 @@ $(document).ready(function () {
   function updateValues() {
     resetValues();
     get_values();
-    valueStore.customerLifetimeValue = ((valueStore.revenue * valueStore.margin) * (1 - valueStore.churn) /
-                    (1 + valueStore.discount - (1 - valueStore.churn)));
+    valueStore.customerLifetimeValue();
     valueStore.costPerAcquisition = ((valueStore.lead + (valueStore.hours * valueStore.hourlyRate)) * valueStore.numberOfLeads) / (valueStore.closing * valueStore.numberOfLeads);
-    valueStore.netLifetimeValue = valueStore.customerLifetimeValue - valueStore.costPerAcquisition;
+    valueStore.netLifetimeValue = valueStore.customerLifetimeValue() - valueStore.costPerAcquisition;
     endOfGrowth();
     discountedCashFlow();
     valueStore.profit = ((valueStore.revenue * valueStore.margin) * valueStore.total_customer)  - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)));
-    ShowValue("#clv", valueStore.customerLifetimeValue);
+    ShowValue("#clv", valueStore.customerLifetimeValue());
     ShowValue("#cpa", valueStore.costPerAcquisition);
     ShowValue("#nltv", valueStore.netLifetimeValue);
     showEndOfGrowth("#churn_exceed_acq", valueStore.currentYear);
@@ -132,11 +135,11 @@ $(document).ready(function () {
 
   function result() {
     if (valueStore.revenue > 0) {
-      if (valueStore.customerLifetimeValue / valueStore.costPerAcquisition >= 3) {
+      if (valueStore.customerLifetimeValue() / valueStore.costPerAcquisition >= 3) {
         $("#result").html("Sweet Lifetime Value<br />You're doing something right!");
         $("#result_box").css("background-color", "green");
         return;
-      } else if (valueStore.customerLifetimeValue / valueStore.costPerAcquisition <= 3 && valueStore.customerLifetimeValue / valueStore.costPerAcquisition >= 1) {
+      } else if (valueStore.customerLifetimeValue() / valueStore.costPerAcquisition <= 3 && valueStore.customerLifetimeValue() / valueStore.costPerAcquisition >= 1) {
         $("#result").html("Cutting it close...<br />Your LTV should be at least 3X your CAC");
         $("#result_box").css("background-color", "#FF4500");
         return;
