@@ -147,11 +147,11 @@ $(document).ready(function () {
 
   function result() {
     if (valueStore.revenue > 0) {
-      if (valueStore.customerLifetimeValue() / valueStore.costPerAcquisition() >= 3) {
+      if (valueStore.ltvCacRatio() >= 3) {
         $("#result").html("Sweet Lifetime Value<br />You're doing something right!");
         $("#result_box").css("background-color", "green");
         return;
-      } else if (valueStore.customerLifetimeValue() / valueStore.costPerAcquisition() <= 3 && valueStore.customerLifetimeValue() / valueStore.costPerAcquisition() >= 1) {
+      } else if (valueStore.ltvCacRatio() <= 3 && valueStore.ltvCacRatio() >= 1) {
         $("#result").html("Cutting it close...<br />Your LTV should be at least 3X your CAC");
         $("#result_box").css("background-color", "#FF4500");
         return;
