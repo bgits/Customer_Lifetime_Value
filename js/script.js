@@ -17,7 +17,7 @@ var valueStore = {
     return this.customerLifetimeValue() - this.costPerAcquisition();
   },
   numberCustomersLost : function() {
-    return valueStore.churn * valueStore.total_customer;
+    return this.churn * this.total_customer;
   },
   profit : function(){
    return ((this.revenue * this.margin) * this.total_customer)  - ((this.numberOfLeads * this.lead) + (this.numberOfLeads * (this.hours * this.hourlyRate)));
@@ -137,8 +137,8 @@ $(document).ready(function () {
   }
 
   function endOfGrowth() {
-    for (valueStore.currentYear = 0; Math.ceil(valueStore.churn * valueStore.total_customer) < (valueStore.numberOfLeads * valueStore.closing); valueStore.currentYear++) {
-        valueStore.total_customer = (valueStore.total_customer + (valueStore.numberOfLeads * valueStore.closing)) - (valueStore.churn * valueStore.total_customer);
+    for (valueStore.currentYear = 0; Math.ceil(valueStore.numberCustomersLost()) < (valueStore.numberOfLeads * valueStore.closing); valueStore.currentYear++) {
+        valueStore.total_customer = (valueStore.total_customer + (valueStore.numberOfLeads * valueStore.closing)) - (valueStore.numberCustomersLost);
 
         valueStore.yearlyProfit.push(
           ((valueStore.revenue * valueStore.margin) * valueStore.total_customer) - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)))
