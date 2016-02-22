@@ -16,6 +16,9 @@ var valueStore = {
   netLifetimeValue : function() {
     return this.customerLifetimeValue() - this.costPerAcquisition();
   },
+  numberCustomersLost : function() {
+    return valueStore.churn * valueStore.total_customer;
+  },
   profit : function(){
    return ((this.revenue * this.margin) * this.total_customer)  - ((this.numberOfLeads * this.lead) + (this.numberOfLeads * (this.hours * this.hourlyRate)));
   }
