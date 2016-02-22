@@ -141,7 +141,7 @@ $(document).ready(function () {
 
   function endOfGrowth() {
     for (valueStore.currentYear = 0; Math.ceil(valueStore.numberCustomersLost()) < valueStore.numberCustomersAcquired(); valueStore.currentYear++) {
-      valueStore.total_customer = valueStore.total_customer + valueStore.numberCustomersAcquired() - (valueStore.numberCustomersLost);
+      valueStore.total_customer = valueStore.total_customer + valueStore.numberCustomersAcquired() - valueStore.numberCustomersLost;
 
         valueStore.yearlyProfit.push(
           ((valueStore.revenue * valueStore.margin) * valueStore.total_customer) - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)))
