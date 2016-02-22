@@ -16,6 +16,9 @@ var valueStore = {
   netLifetimeValue : function() {
     return this.customerLifetimeValue() - this.costPerAcquisition();
   },
+  numberCustomersAcquired : function() {
+    return this.numberOfLeads * this.closing;
+  },
   numberCustomersLost : function() {
     return this.churn * this.total_customer;
   },
@@ -137,7 +140,7 @@ $(document).ready(function () {
   }
 
   function endOfGrowth() {
-    for (valueStore.currentYear = 0; Math.ceil(valueStore.numberCustomersLost()) < (valueStore.numberOfLeads * valueStore.closing); valueStore.currentYear++) {
+    for (valueStore.currentYear = 0; Math.ceil(valueStore.numberCustomersLost()) < valueStore.numberCustomersAcquired(); valueStore.currentYear++) {
         valueStore.total_customer = (valueStore.total_customer + (valueStore.numberOfLeads * valueStore.closing)) - (valueStore.numberCustomersLost);
 
         valueStore.yearlyProfit.push(
