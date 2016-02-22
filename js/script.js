@@ -10,6 +10,9 @@ var valueStore = {
     return ((this.lead + (this.hours * this.hourlyRate)) * this.numberOfLeads) /
       (this.closing * this.numberOfLeads);
   },
+  ltvCacRatio : function() {
+    return this.customerLifetimeValue() / this.costPerAcquisition();
+  },
   netLifetimeValue : function() {
     return this.customerLifetimeValue() - this.costPerAcquisition();
   },
