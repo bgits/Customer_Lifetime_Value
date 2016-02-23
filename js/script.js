@@ -22,6 +22,9 @@ var valueStore = {
   numberCustomersLost : function() {
     return this.churn * this.total_customer;
   },
+  marginPerCustomer : function() {
+    return this.revenue * this.margin;
+  },
   profit : function(){
    return ((this.revenue * this.margin) * this.total_customer)  - ((this.numberOfLeads * this.lead) + (this.numberOfLeads * (this.hours * this.hourlyRate)));
   }
