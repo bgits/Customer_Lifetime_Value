@@ -3,8 +3,8 @@ var valueStore = {
   yearlyProfit : [],
   total_customer : 0,
   customerLifetimeValue : function() {
-    return ((this.revenue * this.margin) * (1 - this.churn) /
-            (1 + this.discount - (1 - this.churn)));
+    return this.grossPerCustomer * 1 - this.churn /
+            (1 + this.discount - (1 - this.churn));
   },
   costPerAcquisition : function() {
     return ((this.lead + (this.hours * this.hourlyRate)) * this.numberOfLeads) /
