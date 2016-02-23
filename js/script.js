@@ -3,7 +3,7 @@ var valueStore = {
   yearlyProfit : [],
   total_customer : 0,
   customerLifetimeValue : function() {
-    return this.grossPerCustomer * 1 - this.churn /
+    return this.grossPerCustomer() * 1 - this.churn /
             (1 + this.discount - (1 - this.churn));
   },
   costPerAcquisition : function() {
@@ -144,7 +144,7 @@ $(document).ready(function () {
 
   function endOfGrowth() {
     for (valueStore.currentYear = 0; Math.ceil(valueStore.numberCustomersLost()) < valueStore.numberCustomersAcquired(); valueStore.currentYear++) {
-      valueStore.total_customer = valueStore.total_customer + valueStore.numberCustomersAcquired() - valueStore.numberCustomersLost;
+      valueStore.total_customer = valueStore.total_customer + valueStore.numberCustomersAcquired() - valueStore.numberCustomersLost();
 
         valueStore.yearlyProfit.push(
           (valueStore.grossPerCustomer() * valueStore.total_customer) - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)))
