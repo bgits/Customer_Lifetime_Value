@@ -22,11 +22,11 @@ var valueStore = {
   numberCustomersLost : function() {
     return this.churn * this.total_customer;
   },
-  marginPerCustomer : function() {
+  grossPerCustomer : function() {
     return this.revenue * this.margin;
   },
   profit : function(){
-   return ((this.revenue * this.margin) * this.total_customer)  - ((this.numberOfLeads * this.lead) + (this.numberOfLeads * (this.hours * this.hourlyRate)));
+    return (this.grossPerCustomer() * this.total_customer)  - ((this.numberOfLeads * this.lead) + (this.numberOfLeads * (this.hours * this.hourlyRate)));
   }
 };
 
@@ -147,7 +147,7 @@ $(document).ready(function () {
       valueStore.total_customer = valueStore.total_customer + valueStore.numberCustomersAcquired() - valueStore.numberCustomersLost;
 
         valueStore.yearlyProfit.push(
-          ((valueStore.revenue * valueStore.margin) * valueStore.total_customer) - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)))
+          (valueStore.grossPerCustomer() * valueStore.total_customer) - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)))
         );
 
         valueStore.years.push(valueStore.currentYear);
