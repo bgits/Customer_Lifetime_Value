@@ -147,7 +147,7 @@ $(document).ready(function () {
       valueStore.total_customer = valueStore.total_customer + valueStore.numberCustomersAcquired() - valueStore.numberCustomersLost();
 
         valueStore.yearlyProfit.push(
-          (valueStore.grossPerCustomer() * valueStore.total_customer) - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)))
+          ((valueStore.grossPerCustomer() * valueStore.total_customer) - ((valueStore.numberOfLeads * valueStore.lead) + (valueStore.numberOfLeads * (valueStore.hours * valueStore.hourlyRate)))).toFixed(2)
         );
 
         valueStore.years.push(valueStore.currentYear);
