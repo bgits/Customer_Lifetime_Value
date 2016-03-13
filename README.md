@@ -3,3 +3,6 @@ This calculator is my expansion on <a href="http://randylubin.com">Randy Lubin's
 This calculator also takes into account the customer growth rate and will display the point at which customer churn is greater than new customer acquisition.
 
 The business value is a discounted cash flow calculation.
+
+## Demo
+[http://bgvianyc.github.io/Customer_Lifetime_Value/](http://bgvianyc.github.io/Customer_Lifetime_Value/)
