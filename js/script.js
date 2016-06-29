@@ -187,4 +187,14 @@ $(document).ready(function () {
     $("#explanation_text").slideToggle("slow", function () {});
   });
 
+  function applyParamToField(param) {
+     $(`#form input[name=${param[0]}]`).val(param[1]);
+  }
+
+  (function applyUrlParams() {
+      for (let p of valueStore.urlParams) {
+          applyParamToField(p);
+      }
+  })();
+
 });
