@@ -27,7 +27,8 @@ var valueStore = {
   },
   profit : function(){
     return (this.grossPerCustomer() * this.total_customer)  - ((this.numberOfLeads * this.lead) + (this.numberOfLeads * (this.hours * this.hourlyRate)));
-  }
+  },
+  urlParams : new URLSearchParams(location.search.slice(1))
 };
 
 var resetValues = function() {
@@ -72,6 +73,7 @@ $(document).ready(function () {
   function updateValues() {
     resetValues();
     get_values();
+    updateUrlParams();
     valueStore.customerLifetimeValue();
     valueStore.costPerAcquisition();
     valueStore.netLifetimeValue();
@@ -109,17 +111,25 @@ $(document).ready(function () {
   // updates values
 
   function get_values() {
-    valueStore.revenue = parse_currency($("#form input[name='revenue']").val());
-    valueStore.margin = parse_percent($("#form input[name='margin']").val());
-    valueStore.churn = parse_percent($("#form input[name='churn']").val());
-    valueStore.discount = parse_percent($("#form input[name='discount']").val());
-    valueStore.lead = parse_currency($("#form input[name='lead']").val());
-    valueStore.closing = parse_percent($("#form input[name='closing']").val());
-    valueStore.hours = parse_currency($("#form input[name='hours']").val());
-    valueStore.hourlyRate = parse_currency($("#form input[name='hourlyRate']").val());
-    valueStore.numberOfLeads = parse_currency($("#form input[name='numberOfLeads']").val());
+      var urlParam = valueStore.urlParams;
 
+      ( valueStore.revenue = parse_currency($("#form input[name='revenue']").val()) ) ? urlParam.set('revenue', valueStore.revenue) : urlParam.delete('revenue');
+      ( valueStore.margin = parse_percent($("#form input[name='margin']").val()) ) ? urlParam.set('margin', valueStore.margin) : urlParam.delete('margin');
+      ( valueStore.churn = parse_percent($("#form input[name='churn']").val()) ) ? urlParam.set('churn', valueStore.churn) : urlParam.delete('churn');
+      ( valueStore.discount = parse_percent($("#form input[name='discount']").val()) ) ? urlParam.set('discount', valueStore.discount) : urlParam.delete('discount');
+      ( valueStore.lead = parse_currency($("#form input[name='lead']").val()) ) ? urlParam.set('lead', valueStore.lead) : urlParam.delete('lead');
+      ( valueStore.closing = parse_percent($("#form input[name='closing']").val()) ) ? urlParam.set('closing', valueStore.closing) : urlParam.delete('closing');
+      ( valueStore.hours = parse_currency($("#form input[name='hours']").val()) ) ? urlParam.set('hours', valueStore.hours) : urlParam.delete('hours');
+      ( valueStore.hourlyRate = parse_currency($("#form input[name='hourlyRate']").val()) ) ? urlParam.set('hourlyRate', valueStore.hourlyRate) : urlParam.delete('hourlyRate');      ( valueStore.numberOfLeads = parse_currency($("#form input[name='numberOfLeads']").val()) ) ? urlParam.set('numberOfLeads', valueStore.numberOfLeads) : urlParam.delete('numberOfLeads');
   };
+
+  function updateValueStoreParams(){
+      //TODO Get all form names and check valueStore for their values, then urlParams.set([inputname], value)
+  }
+
+  function updateUrlParams() {
+      window.history.replaceState({}, '', `${location.pathname}?${valueStore.urlParams}`);
+  }
 
   // Takes a string like "$123,456.789" and returns 123456.789 - from start-up death clock
   function parse_currency(str) {
