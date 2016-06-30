@@ -110,6 +110,18 @@ $(document).ready(function () {
 
   // updates values
 
+    formatMap = {
+        revenue: parse_currency,
+        margin: parse_percent,
+        churn: parse_percent,
+        discount: parse_percent,
+        lead: parse_currency,
+        closing: parse_percent,
+        hours: parse_currency,
+        hourlyRate: parse_currency,
+        numberOfLeads: parse_currency
+    };
+
   function get_values() {
       var urlParam = valueStore.urlParams;
 
@@ -137,6 +149,7 @@ $(document).ready(function () {
   }
 
   function parse_percent(str) {
+    if (parseFloat(str) < 1) return str * 100;
     return parseFloat(str = (str / 100.0));
   }
 
@@ -188,13 +201,15 @@ $(document).ready(function () {
   });
 
   function applyParamToField(param) {
-     $(`#form input[name=${param[0]}]`).val(param[1]);
+      var value = formatMap[param[0]](param[1]);
+      $(`#form input[name=${param[0]}]`).val(value);
   }
 
   (function applyUrlParams() {
       for (let p of valueStore.urlParams) {
           applyParamToField(p);
       }
+      updateValues();
   })();
 
 });
