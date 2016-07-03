@@ -135,10 +135,6 @@ $(document).ready(function () {
       ( valueStore.hourlyRate = parse_currency($("#form input[name='hourlyRate']").val()) ) ? urlParam.set('hourlyRate', valueStore.hourlyRate) : urlParam.delete('hourlyRate');      ( valueStore.numberOfLeads = parse_currency($("#form input[name='numberOfLeads']").val()) ) ? urlParam.set('numberOfLeads', valueStore.numberOfLeads) : urlParam.delete('numberOfLeads');
   };
 
-  function updateValueStoreParams(){
-      //TODO Get all form names and check valueStore for their values, then urlParams.set([inputname], value)
-  }
-
   function updateUrlParams() {
       window.history.replaceState({}, '', `${location.pathname}?${valueStore.urlParams}`);
   }
