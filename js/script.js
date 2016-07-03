@@ -202,10 +202,12 @@ $(document).ready(function () {
   }
 
   (function applyUrlParams() {
-      for (let p of valueStore.urlParams) {
+      if (!valueStore.urlParams.entries().next().done) {
+        for (let p of valueStore.urlParams) {
           applyParamToField(p);
-      }
-      updateValues();
+        }
+        updateValues();
+    }
   })();
 
 });
