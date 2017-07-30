@@ -5,4 +5,4 @@ This calculator also takes into account the customer growth rate and will displa
 The business value is a discounted cash flow calculation.
 
 ## Demo
-[http://bgvianyc.github.io/Customer_Lifetime_Value/](http://bgvianyc.github.io/Customer_Lifetime_Value/)
+[http://bgits.github.io/Customer_Lifetime_Value/](http://bgvianyc.github.io/Customer_Lifetime_Value/)
